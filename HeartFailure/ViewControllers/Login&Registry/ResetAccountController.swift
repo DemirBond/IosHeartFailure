@@ -101,7 +101,7 @@ class ResetAccountController: BaseController, UITextFieldDelegate, MFMailCompose
 	
 	// MARK: - Keyboard Handle Methods
 	
-	func hideKeyboard() {
+	@objc func hideKeyboard() {
 		self.nameField.resignFirstResponder()
 	}
 	

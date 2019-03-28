@@ -9,7 +9,7 @@
 import UIKit
 
 func setupFixedSpace(width: CGFloat) -> UIBarButtonItem {
-	let item = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+	let item = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
 	item.width = width
 	return item
 }
@@ -46,7 +46,7 @@ class CVDToolbar: UIToolbar {
 			let button = UIButton(frame: CGRect(x: 24, y: 0, width: screenSize.width - 80, height: 56) )
 			button.setTitle(rightBottom, for: .normal)
 			button.titleLabel?.font = UIFont(name: "OpenSans", size: 19)
-			button.setTitleColor(UIColor(palette: ColorPalette.lighterPurple), for: UIControlState.normal)
+			button.setTitleColor(UIColor(palette: ColorPalette.lighterPurple), for: UIControl.State.normal)
 			//button.backgroundColor = UIColor(palette: ColorPalette.lighterPurple)
 			//button.layer.cornerRadius = 5
 			// button.layer.borderWidth = 1

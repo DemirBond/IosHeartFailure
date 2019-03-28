@@ -148,7 +148,7 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 	
 	// MARK: - Override Actions
 	
-	override func leftButtonAction(_ sender: UIBarButtonItem) {
+	@objc override func leftButtonAction(_ sender: UIBarButtonItem) {
 		backButtonConfirmAlert()
 	}
 	

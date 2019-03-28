@@ -87,7 +87,7 @@ extension UIColor {
 		let start = hexString.index(hexString.startIndex, offsetBy: 1)
 		let hexColor = hexString.substring(from: start)
 			
-		if hexColor.characters.count == 6 {
+		if hexColor.count == 6 {
 			let scanner = Scanner(string: hexColor)
 			var hexNumber: UInt64 = 0
 			

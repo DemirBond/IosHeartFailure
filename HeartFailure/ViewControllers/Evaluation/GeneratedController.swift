@@ -205,7 +205,7 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 	}
 
 	
-	override func leftButtonAction(_ sender: UIBarButtonItem) {
+	@objc override func leftButtonAction(_ sender: UIBarButtonItem) {
 		if validatePage() {
 			_ = self.navigationController?.popViewController(animated: true)
 		}
@@ -270,7 +270,7 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 	}
 	
 	
-	override func bottomRightButtonAction(_ sender: UIBarButtonItem) {
+	@objc override func bottomRightButtonAction(_ sender: UIBarButtonItem) {
 		if validatePage() && shortcutModel != nil && shortcutModel?.title != DataManager.manager.evaluation!.outputInMain.title{
 			let storyboard = UIStoryboard(name: "Medical", bundle: nil)
 
@@ -495,7 +495,7 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 				activeField?.becomeFirstResponder()
 				
 			} else {
-				self.tableView.scrollToRow(at: path, at: UITableViewScrollPosition.middle, animated: false)
+				self.tableView.scrollToRow(at: path, at: UITableView.ScrollPosition.middle, animated: false)
 				if let cell = tableView.cellForRow(at: path) as? GeneratedCell {
 					activeField = cell.textField
 					activeField?.isEnabled = true
@@ -560,7 +560,7 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 			
 		case .textLeft, .textRight, .integerLeft, .integerRight, .decimalLeft, .decimalRight:
 			cell.selectionStyle = .none
-			cell.textField?.borderStyle = UITextBorderStyle.none
+			cell.textField?.borderStyle = UITextField.BorderStyle.none
 			
 		case .disclosureControl where itemModel.storedValue!.isChecked == false:
 			cell.selectionStyle = .none

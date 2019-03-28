@@ -79,9 +79,9 @@ class DemoController: BaseController, UIScrollViewDelegate, CAAnimationDelegate 
 		
 		let animation: CATransition = CATransition()
 		animation.delegate = self
-		animation.type = kCATransitionFade
+		animation.type = CATransitionType.fade
 		animation.duration = 0.7
-		animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+		animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
 		
 		self.scrollView.layer.add(animation, forKey: "FadeAnimation")
 		
@@ -122,7 +122,7 @@ class DemoController: BaseController, UIScrollViewDelegate, CAAnimationDelegate 
 	}
 	
 	
-	func continueButton(){
+	@objc func continueButton(){
 		//print("button pressed")
 		self.performSegue(withIdentifier: DemoController.demoHomeSegueID, sender: nil)
 	}

@@ -320,7 +320,7 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate, KBNumberPadDelegate {
 		
 		do {
 			try cellModel.storedValue?.validateInput(inputText: strInput!)
-			self.cellModel.storedValue?.value = strInput!.characters.count > 0 ? strInput : nil
+			self.cellModel.storedValue?.value = strInput!.count > 0 ? strInput : nil
 			
 			if (cellModel.form.itemType == .integerRightExpandable && textField == self.textField) {
 				
@@ -628,7 +628,7 @@ class CheckBoxCell: GeneratedCell {
 			
 			
 				print(cellModel.title)
-			print(cellModel.storedValue?.isChecked)
+			print(cellModel.storedValue?.isChecked ?? false)
 			
 			// to here
 			

@@ -46,10 +46,10 @@ class StyleController: UIViewController {
 	
 	
 	private func showMessage() {
-		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
 			self.backView.alpha = 0.55
 		}, completion: { (animated) in
-			UIView.animate(withDuration: self.duration/2.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+			UIView.animate(withDuration: self.duration/2.0, delay: 0.0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
 				self.backView.alpha = 0.48
 				self.sheetView.alpha = 1.0
 			}, completion: nil)
@@ -57,7 +57,7 @@ class StyleController: UIViewController {
 	}
 	
 	
-	func removeMessage() {
+	@objc func removeMessage() {
 		hideMessage()
 	}
 	
@@ -74,7 +74,7 @@ class StyleController: UIViewController {
 	
 	
 	private func hideMessage() {
-		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
 			self.sheetView.alpha = 0.0
 			self.backView.alpha = 0.0
 		}, completion: { (animated) in

@@ -61,7 +61,7 @@ class ProfileController: BaseTableController {
 			return
 		}
 		
-		if password != nil && password!.characters.count < General.minPasswordLength  {
+		if password != nil && password!.count < General.minPasswordLength  {
 			let alertController = UIAlertController(title: "The password is too short".localized,
 				message: "Password must contain at least \(General.minPasswordLength) characters", preferredStyle: .alert)
 			let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -152,7 +152,7 @@ class ProfileController: BaseTableController {
 			cell.selectionStyle = .none
 			
 			if cellType ==  .textLeft || cellType ==  .mail || cellType ==  .password  {
-				cell.textField?.borderStyle = UITextBorderStyle.none
+				cell.textField?.borderStyle = UITextField.BorderStyle.none
 			}
 		
 			return cell

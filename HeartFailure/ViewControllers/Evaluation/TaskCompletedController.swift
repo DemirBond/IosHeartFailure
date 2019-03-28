@@ -64,10 +64,10 @@ class TaskCompletedController: UIViewController, CAAnimationDelegate {
 	func showMessage() {
 		self.completeView.alpha = 0.0
 		
-		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
 			self.backView.alpha = 0.7
 		}, completion: { (animated) in
-			UIView.animate(withDuration: self.duration/2.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+			UIView.animate(withDuration: self.duration/2.0, delay: 0.0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
 				self.backView.alpha = 0.48
 				self.completeView.alpha = 1.0
 			}, completion: nil)
@@ -81,8 +81,8 @@ class TaskCompletedController: UIViewController, CAAnimationDelegate {
 	}
 	
 	
-	func hideMessage() {
-		UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+	@objc func hideMessage() {
+		UIView.animate(withDuration: 0.3, delay: 0.0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
 			self.backView.alpha = 0.0
 			self.completeView.alpha = 0.0
 		}, completion: { (animated) in

@@ -109,7 +109,7 @@ class BaseController: UIViewController, BuildAppearance, EvaluationEditing {
 	
 	
 	func setupFixedSpace(width: CGFloat) -> UIBarButtonItem {
-		let item = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+		let item = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
 		item.width = width
 		return item
 	}
@@ -146,19 +146,19 @@ class BaseController: UIViewController, BuildAppearance, EvaluationEditing {
 	}
 	
 	
-	func leftButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
-	func rightTextButtonAction(_ sender: UIBarButtonItem) {
+	@objc func leftButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
+	@objc func rightTextButtonAction(_ sender: UIBarButtonItem) {
 		let storyboard = UIStoryboard(name: "Medical", bundle: nil)
 		let controller = storyboard.instantiateViewController(withIdentifier: "StyleControllerID") as! StyleController
 		controller.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
 		self.present(controller, animated: false) { () }
 		styleController = controller
 	}
-	func rightListButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
-	func rightMenuButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
+	@objc func rightListButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
+	@objc func rightMenuButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
 	
-	func bottomRightButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
-	func bottomRightButtonAction1(_ sender: UIBarButtonItem) { /* tooverride */}
+	@objc func bottomRightButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
+	@objc func bottomRightButtonAction1(_ sender: UIBarButtonItem) { /* tooverride */}
 	
 	
 	

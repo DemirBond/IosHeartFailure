@@ -42,7 +42,7 @@ class ReferencesController: UIViewController, UIWebViewDelegate {
 		// Dispose of any resources that can be recreated.
 	}
 	
-	public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+	public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
 		//print("in On Click Link")
 		
 		switch navigationType {

@@ -92,11 +92,11 @@ class TextItemStyle {
 		}
 	}
 	
-	class var attributes: Dictionary<String, Any> {
+	class var attributes: [NSAttributedString.Key: Any] {
 		
-		var dict = Dictionary<String, Any>()
-		dict[NSForegroundColorAttributeName] = tintColor
-		dict[NSFontAttributeName] = textFont
+		var dict = [NSAttributedString.Key: Any]()
+		dict[NSAttributedString.Key.foregroundColor] = tintColor
+		dict[NSAttributedString.Key.font] = textFont
 		
 		return dict
 	}
@@ -232,7 +232,7 @@ class CVDStyle {
 	func setup() {
 		UINavigationBar.appearance().titleTextAttributes = BarItemStyle.attributes
 		UINavigationBar.appearance().tintColor = BarItemStyle.tintColor
-		UIBarButtonItem.appearance().setTitleTextAttributes(BarButtonStyle.attributes, for: UIControlState.normal)
+		UIBarButtonItem.appearance().setTitleTextAttributes(BarButtonStyle.attributes, for: UIControl.State.normal)
 		UIButton.appearance().titleLabel?.font = AlertTitleStyle.textFont
 	}
 	

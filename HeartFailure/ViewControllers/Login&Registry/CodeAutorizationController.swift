@@ -117,7 +117,7 @@ class CodeAutorizationController: BaseController, UITextFieldDelegate, MFMailCom
 	
 	// MARK: - Keyboard Handle Methods
 	
-	func hideKeyboard() {
+	@objc func hideKeyboard() {
 		self.codeField.resignFirstResponder()
 	}
 	

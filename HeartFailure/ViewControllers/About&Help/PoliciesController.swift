@@ -28,7 +28,7 @@ class PoliciesController: BaseController {
 	// MARK: - Actions
 	
 	@IBAction func printAction(_ sender: AnyObject) {
-		let attrs = [NSFontAttributeName: UIFont.systemFont(ofSize: 10), NSForegroundColorAttributeName: UIColor.black] as [String : Any]
+		let attrs: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.black]
 		let str = NSAttributedString(string: textView.text, attributes: attrs)
 		let print = UISimpleTextPrintFormatter(attributedText: str)
 		

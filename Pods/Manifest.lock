@@ -1,13 +1,13 @@
 PODS:
-  - Alamofire (4.5.0)
-  - Crashlytics (3.8.5):
-    - Fabric (~> 1.6.3)
-  - Fabric (1.6.12)
-  - NVActivityIndicatorView (3.7.0):
-    - NVActivityIndicatorView/Presenter (= 3.7.0)
-  - NVActivityIndicatorView/Presenter (3.7.0)
-  - SwiftyJSON (3.1.4)
-  - YNExpandableCell (1.1.0)
+  - Alamofire (4.8.1)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
+  - Fabric (1.9.0)
+  - NVActivityIndicatorView (4.6.1):
+    - NVActivityIndicatorView/Presenter (= 4.6.1)
+  - NVActivityIndicatorView/Presenter (4.6.1)
+  - SwiftyJSON (4.2.0)
+  - YNExpandableCell (1.2.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -17,14 +17,23 @@ DEPENDENCIES:
   - SwiftyJSON
   - YNExpandableCell
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Crashlytics
+    - Fabric
+    - NVActivityIndicatorView
+    - SwiftyJSON
+    - YNExpandableCell
+
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
-  Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
-  NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  YNExpandableCell: 47bf7cff721aa535c0e9e1163bf22b5573441bb4
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  YNExpandableCell: f71457eddc5f2d607de5a2aef545325b0b7622e4
 
 PODFILE CHECKSUM: ccee5a5b94aff75b02f36f54856d2907ea4145a6
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.6.1

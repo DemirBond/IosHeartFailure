@@ -31,18 +31,18 @@ class HypertensionController: GeneratedController {
 		super.viewDidLoad()
 		button1.titleLabel?.textColor = SectionButttonStyle.fontColor
 		button1.titleLabel?.font = SectionButttonStyle.textFont
-		button1.setTitle(pageForm.items[0].title, for: UIControlState.normal)
-		button1.setTitleColor(SectionButttonStyle.fontColor, for: UIControlState.normal)
+		button1.setTitle(pageForm.items[0].title, for: UIControl.State.normal)
+		button1.setTitleColor(SectionButttonStyle.fontColor, for: UIControl.State.normal)
 		button1.tag = tab1Tag
 		
 		button2.titleLabel?.font = SectionButttonStyle.textFont
-		button2.setTitle(pageForm.items[1].title, for: UIControlState.normal)
-		button2.setTitleColor(SectionButttonStyle.fontColor, for: UIControlState.normal)
+		button2.setTitle(pageForm.items[1].title, for: UIControl.State.normal)
+		button2.setTitleColor(SectionButttonStyle.fontColor, for: UIControl.State.normal)
 		button2.tag = tab2Tag
 		
 		button3.titleLabel?.font = SectionButttonStyle.textFont
-		button3.setTitle(pageForm.items[2].title, for: UIControlState.normal)
-		button3.setTitleColor(SectionButttonStyle.fontColor, for: UIControlState.normal)
+		button3.setTitle(pageForm.items[2].title, for: UIControl.State.normal)
+		button3.setTitleColor(SectionButttonStyle.fontColor, for: UIControl.State.normal)
 		button3.tag = tab3Tag
 		
 		buttons.append(button1)
@@ -61,9 +61,9 @@ class HypertensionController: GeneratedController {
 	
 	func selectTab(button: UIButton, selected: Bool) {
 		if selected {
-			button.setTitleColor(UIColor(palette: ColorPalette.lighterPurple), for: UIControlState.normal)
+			button.setTitleColor(UIColor(palette: ColorPalette.lighterPurple), for: UIControl.State.normal)
 		} else {
-			button.setTitleColor(SectionButttonStyle.fontColor, for: UIControlState.normal)
+			button.setTitleColor(SectionButttonStyle.fontColor, for: UIControl.State.normal)
 		}
 	}
 	
@@ -127,7 +127,7 @@ class HypertensionController: GeneratedController {
 			()
 			
 		default:
-			cell.selectionStyle = UITableViewCellSelectionStyle.none
+			cell.selectionStyle = UITableViewCell.SelectionStyle.none
 		}
 		return cell
 	}

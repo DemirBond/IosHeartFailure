@@ -1,3 +1,4 @@
+# USE [ExpandableCell](https://github.com/younatics/ExpandableCell). New version of this library.
 # YNExpandableCell
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
@@ -7,18 +8,15 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/younatics/YNExpandableCell/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/younatics/YNExpandableCell.svg?branch=master)](https://travis-ci.org/younatics/YNExpandableCell)
 [![Platform](https://img.shields.io/cocoapods/p/YNExpandableCell.svg?style=flat)](http://cocoapods.org/pods/YNExpandableCell)
-[![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
-
-#### ✨[Listed 5th at trending open source and 8th at trending developer in Github Swift category [03/21/2017]](https://github.com/younatics/YNExpandableCell/blob/master/Images/5th.PNG)
+[![Swift 4.2](https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat)](https://developer.apple.com/swift/)
 
 ## Updates
-
 See [CHANGELOG](https://github.com/younatics/YNExpandableCell/blob/master/CHANGELOG.md) for details
 
 ## Intoduction
-Easiest usage of expandable & collapsible cell for iOS, written in Swift 3. You can customize expandable `UITableViewCell` whatever you like. `YNExpandableCell` is made because `insertRows` and `deleteRows` is hard to use. You can just inheirt `YNTableViewDelegate` and add one more method `func tableView(_ tableView: YNTableView, expandCellAt indexPath) -> UITableViewCell?` 
+Easiest usage of expandable & collapsible cell for iOS, written in Swift 4.2 You can customize expandable `UITableViewCell` whatever you like. `YNExpandableCell` is made because `insertRows` and `deleteRows` is hard to use. You can just inheirt `YNTableViewDelegate` and add one more method `func tableView(_ tableView: YNTableView, expandCellAt indexPath) -> UITableViewCell?` 
 
-![demo](Images/YNExpandableCell.gif)
+![demo](Images/demo.gif)
 
 ## Requirements
 
@@ -129,10 +127,11 @@ Make Extensions for more `UITableViewDelegate` if you need or make pull request 
 
 ## References
 #### Please tell me or make pull request if you use this library in your application :) 
-[@zigbang](https://github.com/zigbang)
-
+#### [@zigbang](https://github.com/zigbang)
+#### [MotionBook](https://github.com/younatics/MotionBook)
 ## Author
-[younatics 🇰🇷](http://younatics.github.io)
+[younatics](https://twitter.com/younatics)
+<a href="http://twitter.com/younatics" target="_blank"><img alt="Twitter" src="https://img.shields.io/twitter/follow/younatics.svg?style=social&label=Follow"></a>
 
 ## License
 YNExpandableCell is available under the MIT license. See the LICENSE file for more info.

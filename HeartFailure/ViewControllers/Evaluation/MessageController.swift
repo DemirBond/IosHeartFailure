@@ -65,13 +65,13 @@ class MessageController: UIViewController {
 		})
 	}
 	
-	func removeMessage() {
+	@objc func removeMessage() {
 		self.dismiss(animated: false, completion: nil)
 	}
 
 	
-	func hideMessage() {
-		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+	@objc func hideMessage() {
+		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
 			self.sheetView.frame.origin = CGPoint(x: 0.0, y: -self.sheetView.frame.size.height)
 		}, completion: { (animated) in
 			self.dismiss(animated: false, completion: nil)

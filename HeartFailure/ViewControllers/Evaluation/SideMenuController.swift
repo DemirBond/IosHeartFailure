@@ -23,7 +23,7 @@ struct MenuButton {
 		self.action = action
 		
 		self.target = target
-		self.button = UIButton(type: UIButtonType.custom)
+		self.button = UIButton(type: UIButton.ButtonType.custom)
 		if let color = fontColor {
 			self.textColor = color
 		}
@@ -31,11 +31,11 @@ struct MenuButton {
 			self.highlightedColor = color
 		}
 		
-		self.button.setTitle(action.title, for: UIControlState.normal)
-		self.button.setTitleColor(textColor, for: UIControlState.normal)
-		self.button.setTitleColor(highlightedColor, for: UIControlState.highlighted)
+		self.button.setTitle(action.title, for: UIControl.State.normal)
+		self.button.setTitleColor(textColor, for: UIControl.State.normal)
+		self.button.setTitleColor(highlightedColor, for: UIControl.State.highlighted)
 		self.button.titleLabel?.font = UIFont(name: "OpenSans", size: 16)
-		self.button.addTarget(target, action: #selector(SideMenuController.buttonAction), for: UIControlEvents.touchUpInside)
+		self.button.addTarget(target, action: #selector(SideMenuController.buttonAction), for: UIControl.Event.touchUpInside)
 	}
 }
 
@@ -122,7 +122,7 @@ class SideMenuController: UIViewController {
 	}
 	
 	
-	func buttonAction(_ sender: UIButton) {
+	@objc func buttonAction(_ sender: UIButton) {
 		var action: MenuAction?
 		for menuButton in menuButtons {
 			if sender == menuButton.button {
@@ -134,16 +134,16 @@ class SideMenuController: UIViewController {
 	}
 	
 	
-	func removeMenu() {
+	@objc func removeMenu() {
 		self.hideMenu(completion: nil)
 	}
 	
 	
 	private func showMenu() {
-		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
 			self.backView.alpha = 0.0
 		}, completion: { (animated) in
-			UIView.animate(withDuration: self.duration/2.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+			UIView.animate(withDuration: self.duration/2.0, delay: 0.0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
 				self.backView.alpha = 0.0
 				self.sheetView.alpha = 1.0
 			}, completion: nil)
@@ -152,7 +152,7 @@ class SideMenuController: UIViewController {
 	
 	
 	private func hideMenu(completion: MenuHandler?) {
-		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
 			self.sheetView.alpha = 0.0
 			self.backView.alpha = 0.0
 		}, completion: { (animated) in

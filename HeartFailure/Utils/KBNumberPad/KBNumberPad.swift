@@ -130,7 +130,7 @@ public class KBNumberPad: UIView {
 	
 	fileprivate func loadIcon(name: String) -> UIImage? {
 		let image = UIImage(named: name, in: bundle(), compatibleWith: nil)
-		let colorable = UIImageRenderingMode.alwaysTemplate
+		let colorable = UIImage.RenderingMode.alwaysTemplate
 		return image?.withRenderingMode(colorable)
 	}
 	
@@ -147,17 +147,17 @@ public class KBNumberPad: UIView {
 	
 	
 	func addNotificationsObservers() {
-		NotificationCenter.default.addObserver(self, selector: #selector(textDidBeginEditing), name: NSNotification.Name.UITextFieldTextDidBeginEditing, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(textDidBeginEditing), name: NSNotification.Name.UITextFieldTextDidBeginEditing, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(textDidEndEditing), name: NSNotification.Name.UITextViewTextDidEndEditing, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(textDidEndEditing), name: NSNotification.Name.UITextViewTextDidEndEditing, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(textDidBeginEditing), name: UITextField.textDidBeginEditingNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(textDidBeginEditing), name: UITextField.textDidBeginEditingNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(textDidEndEditing), name: UITextView.textDidEndEditingNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(textDidEndEditing), name: UITextView.textDidEndEditingNotification, object: nil)
 		
 	}
 	
 	
 	// MARK: - TextField Editing
 	
-	func textDidBeginEditing(notification: NSNotification) {
+	@objc func textDidBeginEditing(notification: NSNotification) {
 //		if !(notification.object as! NSObject).conforms(to: protocol(UITextInput)) do {
 //			return
 //		}
@@ -168,7 +168,7 @@ public class KBNumberPad: UIView {
 		}
 	}
 	
-	func textDidEndEditing(notification: NSNotification) {
+	@objc func textDidEndEditing(notification: NSNotification) {
 		self.textInput = nil
 	}
 
@@ -198,7 +198,7 @@ public class KBNumberPad: UIView {
 	
 	public func setNumberButtonsColor(_ color: UIColor) {
 		numberButtons.forEach {
-			$0.setTitleColor(color, for: UIControlState.normal)
+			$0.setTitleColor(color, for: UIControl.State.normal)
 		}
 	}
 	
@@ -212,7 +212,7 @@ public class KBNumberPad: UIView {
 	// - Punc button
 	
 	public func setPuncButtonColor(_ color: UIColor) {
-		puncButton.setTitleColor(color, for: UIControlState.normal)
+		puncButton.setTitleColor(color, for: UIControl.State.normal)
 	}
 	
 	public func setPuncButtonFont(_ font: UIFont) {
@@ -231,7 +231,7 @@ public class KBNumberPad: UIView {
 	// - Done button
 	
 	public func setDoneButtonColor(_ color: UIColor) {
-		doneButton.setTitleColor(color, for: UIControlState.normal)
+		doneButton.setTitleColor(color, for: UIControl.State.normal)
 	}
 	
 	public func setDoneButtonFont(_ font: UIFont) {
@@ -250,7 +250,7 @@ public class KBNumberPad: UIView {
 	// - Next button
 	
 	public func setNextButtonColor(_ color: UIColor) {
-		nextButton.setTitleColor(color, for: UIControlState.normal)
+		nextButton.setTitleColor(color, for: UIControl.State.normal)
 	}
 	
 	public func setNextButtonFont(_ font: UIFont) {

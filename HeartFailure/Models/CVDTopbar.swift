@@ -35,31 +35,31 @@ class CVDTopbar: NSObject {
 		
 		if let _ = dict["rightMenuButton"] as? String {
 			let barItem = UIBarButtonItem(image: UIImage(named: "more-vertical"), style: .plain, target: target, action: actions[3])
-			barItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, 5)
+			barItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
 			self.rightMenuBarItem = barItem
 		}
 		
 		if let _ = dict["rightListButton"] as? String {
 			let barItem = UIBarButtonItem(image: UIImage(named: "home_black"), style: .plain, target: target, action: actions[2])
-			barItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, 5)
+			barItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
 			if self.rightMenuBarItem != nil {
-				barItem.imageInsets = UIEdgeInsetsMake(0, 5, 0, -5)
+				barItem.imageInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -5)
 			}
 			self.rightListBarItem = barItem
 		}
 		
 		if let _ = dict["rightTextButton"] as? String {
 			let barItem = UIBarButtonItem(image: UIImage(named: "text-size"), style: .plain, target: target, action: actions[1])
-			barItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, 5)
+			barItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
 			if self.rightMenuBarItem != nil  {
-				barItem.imageInsets = UIEdgeInsetsMake(0, 5, 0, -5)
+				barItem.imageInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -5)
 				if self.rightListBarItem != nil {
-					barItem.imageInsets = UIEdgeInsetsMake(0, 15, 0, -15)
+					barItem.imageInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: -15)
 				}
 			}
 			else {
 				if self.rightListBarItem != nil {
-					barItem.imageInsets = UIEdgeInsetsMake(0, 10, 0, -10)
+					barItem.imageInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -10)
 				}
 			}
 			self.rightTextBarItem = barItem

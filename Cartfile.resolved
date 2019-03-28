@@ -1,0 +1,5 @@
+github "Alamofire/Alamofire" "4.8.2"
+github "SwiftyJSON/SwiftyJSON" "4.2.0"
+github "ninjaprox/NVActivityIndicatorView" "4.6.1"
+github "scalessec/Toast-Swift" "2.0.0"
+github "younatics/YNExpandableCell" "1.2.1"

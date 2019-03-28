@@ -124,7 +124,7 @@ class BaseTableController: UITableViewController, BuildAppearance, EvaluationEdi
 	}
 	
 	
-	func checkDependancies() {
+	@objc func checkDependancies() {
 		
 		for depended in pageForm.items {
 			guard let dependsOn = depended.dependancy?.dependsOn else { continue }
@@ -190,19 +190,19 @@ class BaseTableController: UITableViewController, BuildAppearance, EvaluationEdi
 	}
 	
 	
-	func leftButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
-	func rightTextButtonAction(_ sender: UIBarButtonItem) {
+	@objc func leftButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
+	@objc func rightTextButtonAction(_ sender: UIBarButtonItem) {
 		let storyboard = UIStoryboard(name: "Medical", bundle: nil)
 		let controller = storyboard.instantiateViewController(withIdentifier: "StyleControllerID") as! StyleController
 		controller.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
 		self.present(controller, animated: false) { () }
 		styleController = controller
 	}
-	func rightListButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
-	func rightMenuButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
+	@objc func rightListButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
+	@objc func rightMenuButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
 	
-	func bottomRightButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
-	func bottomRightButtonAction1(_ sender: UIBarButtonItem) { /* tooverride */}
+	@objc func bottomRightButtonAction(_ sender: UIBarButtonItem) { /* tooverride */}
+	@objc func bottomRightButtonAction1(_ sender: UIBarButtonItem) { /* tooverride */}
 	
 	
 	func hideKeyboard() {

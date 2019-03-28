@@ -176,27 +176,27 @@ class LoginController: BaseController, UITextFieldDelegate, UIGestureRecognizerD
 	// MARK: - Keyboard Handle Methods
 	
 	func registerForKeyboardNotifications() {
-		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown), name: .UIKeyboardDidShow, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name: .UIKeyboardWillHide, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown), name: UIResponder.keyboardDidShowNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name: UIResponder.keyboardWillHideNotification, object: nil)
 	}
 	
 	
 	func unRegisterForKeyboardNotifications() {
-		NotificationCenter.default.removeObserver(self, name: .UIKeyboardDidShow, object: nil)
-		NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+		NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+		NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
 	}
 	
 	
-	func keyboardWillBeHidden(aNotification: NSNotification) {
+	@objc func keyboardWillBeHidden(aNotification: NSNotification) {
 		let contentInsets: UIEdgeInsets = UIEdgeInsets.zero
 		scrollView.contentInset = contentInsets
 		scrollView.scrollIndicatorInsets = contentInsets
 	}
 	
 	
-	func keyboardWasShown(aNotification: NSNotification) {
+	@objc func keyboardWasShown(aNotification: NSNotification) {
 		let info: NSDictionary = aNotification.userInfo! as NSDictionary
-		var kbSize: CGRect = info.object(forKey: UIKeyboardFrameBeginUserInfoKey) as! CGRect
+		var kbSize: CGRect = info.object(forKey: UIResponder.keyboardFrameBeginUserInfoKey) as! CGRect
 		
 		kbSize = self.view.convert(kbSize, to: nil)
 		let contentInsets: UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.size.height + 2, right: 0.0)
@@ -212,7 +212,7 @@ class LoginController: BaseController, UITextFieldDelegate, UIGestureRecognizerD
 	}
 	
 	
-	func hideKeyboard() {
+	@objc func hideKeyboard() {
 		self.view.endEditing(true)
 	}
 	

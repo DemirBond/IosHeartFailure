@@ -25,7 +25,7 @@ func calculateTextHeight(message: String, forWidth width: CGFloat, font: UIFont)
 	
 	let boundingBox = message.boundingRect(with: constraintRect,
 		options: NSStringDrawingOptions.usesLineFragmentOrigin,
-		attributes: [NSFontAttributeName: font], context: nil)
+		attributes: [NSAttributedString.Key.font: font], context: nil)
 	
 	return boundingBox.size.height
 }

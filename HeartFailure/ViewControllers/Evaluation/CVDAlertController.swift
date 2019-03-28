@@ -32,7 +32,7 @@ struct CVDButton {
 		self.pressed = pressed
 		
 		self.target = target
-		self.button = UIButton(type: UIButtonType.custom)
+		self.button = UIButton(type: UIButton.ButtonType.custom)
 		if let color = fontColor {
 			self.textColor = color
 		}
@@ -41,13 +41,13 @@ struct CVDButton {
 		}
 		
 		let (imageUp, imageDown) = resizibleImage(named: up, highlighted: pressed )
-		self.button.setBackgroundImage(imageUp, for: UIControlState.normal)
-		self.button.setBackgroundImage(imageDown, for: UIControlState.highlighted)
+		self.button.setBackgroundImage(imageUp, for: UIControl.State.normal)
+		self.button.setBackgroundImage(imageDown, for: UIControl.State.highlighted)
 		
-		self.button.setTitle(action.title, for: UIControlState.normal)
-		self.button.setTitleColor(textColor, for: UIControlState.normal)
-		self.button.setTitleColor(highlightedColor, for: UIControlState.highlighted)
-		self.button.addTarget(target, action: #selector(CVDAlertController.buttonAction), for: UIControlEvents.touchUpInside)
+		self.button.setTitle(action.title, for: UIControl.State.normal)
+		self.button.setTitleColor(textColor, for: UIControl.State.normal)
+		self.button.setTitleColor(highlightedColor, for: UIControl.State.highlighted)
+		self.button.addTarget(target, action: #selector(CVDAlertController.buttonAction), for: UIControl.Event.touchUpInside)
 	}
 }
 
@@ -153,7 +153,7 @@ class CVDAlertController: UIViewController {
 	}
 	
 	
-	func buttonAction(_ sender: UIButton) {
+	@objc func buttonAction(_ sender: UIButton) {
 		var action: CVDAction?
 		for alertbutton in cvdButtons {
 			if sender == alertbutton.button {
@@ -168,7 +168,7 @@ class CVDAlertController: UIViewController {
 	func showAlert() {
 		self.sheetView.alpha = 0.0
 		
-		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
 			self.stageView.alpha = 0.48
 			self.sheetView.alpha = 1.0
 		}, completion: nil)		
@@ -176,7 +176,7 @@ class CVDAlertController: UIViewController {
 	
 	
 	func hideAlert(completion: CVDHandler?) {
-		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+		UIView.animate(withDuration: self.duration, delay: 0.0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
 			self.sheetView.alpha = 0.0
 			self.stageView.alpha = 0.0
 		}, completion: { (animated) in

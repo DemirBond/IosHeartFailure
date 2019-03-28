@@ -56,10 +56,10 @@ open class ExpyTableView: UITableView {
 	public fileprivate(set) var expandableSections: [Int: Bool] = [:]
 	public fileprivate(set) var visibleSections: [Int: Bool] = [:]
 	
-	open var expandingAnimation: UITableViewRowAnimation = .fade
-	open var collapsingAnimation: UITableViewRowAnimation = .fade
+	open var expandingAnimation: UITableView.RowAnimation = .fade
+	open var collapsingAnimation: UITableView.RowAnimation = .fade
 	
-	public override init(frame: CGRect, style: UITableViewStyle) {
+	public override init(frame: CGRect, style: UITableView.Style) {
 		super.init(frame: frame, style: style)
 	}
 	
@@ -224,7 +224,7 @@ extension ExpyTableView: UITableViewDataSource {
 			return headerCell
 		}
 		
-		DispatchQueue.main.async { [weak self] _ in
+		DispatchQueue.main.async { [weak self] in
 			if self?.visibleSections[indexPath.section] == true {
 				headerCellConformant.changeState(.willExpand, cellReuseStatus: true)
 				headerCellConformant.changeState(.didExpand, cellReuseStatus: true)

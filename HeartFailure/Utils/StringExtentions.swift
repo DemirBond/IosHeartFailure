@@ -16,7 +16,7 @@ extension NSMutableAttributedString {
 		
 		let foundRange = self.mutableString.range(of: textToFind)
 		if foundRange.location != NSNotFound {
-			self.addAttribute(NSLinkAttributeName, value: linkURL, range: foundRange)
+			self.addAttribute(NSAttributedString.Key.link, value: linkURL, range: foundRange)
 			return true
 		}
 		return false
@@ -26,7 +26,8 @@ extension NSMutableAttributedString {
 extension String {
 	var html2AttributedString: NSAttributedString? {
 		do {
-			return try NSAttributedString(data: Data(utf8), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
+			return try NSAttributedString(data: Data(utf8), options: [.documentType: NSAttributedString.DocumentType.html,
+																						 .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
 		} catch {
 			//print(error)
 			return nil
@@ -38,7 +39,8 @@ extension String {
 extension Data {
 	var attributedString: NSAttributedString? {
 		do {
-			return try NSAttributedString(data: self, options:[NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
+			return try NSAttributedString(data: self, options: [.documentType: NSAttributedString.DocumentType.html,
+																				.characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
 		} catch {
 			//print(error)
 		}
