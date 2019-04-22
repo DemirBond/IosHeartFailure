@@ -130,10 +130,10 @@ struct Presentation {
 	
 	// Heart Failure -> History
 	static let newOnsetHF = "#id:chknewHF |    #title:New onset HF/initial evaluation |    #type:#radio | #group: (chknewHF, chkchronic)"
-	static let chronicHF = "#id:chkchronic |    #title:Chronic known HF |    #type:#radio | #group: (chknewHF, chkchronic)"
+	static let chronicHF = "#id:chkHFPLVF |    #title:Chronic known HF |    #type:#radio | #group: (chknewHF, chkchronic)"
 	static let hfDiagnosisDurationPerWeek = "#id:txtdur|    #title:Duration / Week | #type:#integerRight|   #min:0|  #max:999|  #placeholder: "
 	static let oneormorehf = "#id:chkHFPLVF |    #title:One or more HF admissions in 12 months |    #type:#check"
-	static let twounscheduled = "#id:chkfoutpt |    #title:Two unscheduled ED or clinic visits in 12 months |    #type:#check"
+	static let twounscheduled = "#id:chkfoutpt |    #title:Previous HF hospitalization |    #type:#check"
 	static let chestpain = "#id:chkTA |    #title:Chest Pain | #type: #check"
 	static let weightGain = "#id:chkWeight|    #title:Weight gain|    #type:#check"
 	static let dyspneaonexe = "#id:chkDOE | #title:Dyspnea on exertion | #type:#disclosureControl"
@@ -185,19 +185,22 @@ struct Presentation {
 	
 	// Heart Failure -> Clinical
 	static let lvef = "#id:txtCHF | #title:LVEF | #type:#integerRight|   #min:10|  #max:80|  #placeholder: LVEF "
-static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight|   #min:30|  #max:100|  #placeholder: RA O2 SAT"
-	static let rasat = "#id:txtO2sat | #title:RA O2 SAT | #type:#integerRight|   #min:30|  #max:100|  #placeholder: CV/SVO2sat%"
-	static let hepatojulularReflux = "#id:chkHJR | #title:Hepatojulular reflux | #type:#check"
+   static let  vo2sat = "#id:txtVo2sat | #title:CV/SVO2sat% | #type:#integerRight|   #min:30|  #max:100|  #placeholder: RA O2 SAT"
+	static let rasat = "#id:txtO2Sat | #title:RA O2 SAT | #type:#integerRight|   #min:30|  #max:100|  #placeholder: CV/SVO2sat%"
+	static let hepatojulularReflux = "#id:chkHJR | #title:Neck veins not sssesable | #type:#check"
 	static let jugularVenousDistention = "#id:chkJVD | #title:Jugular Venous Distention | #type:#check"
 	static let edemaInHeartFailure = "#id:chkedema | #title:Edema | #type:#check"
-	static let leftSidedS3S4Gallop = "#id:chkS3 | #title:Left Sided S3 Gallop | #type:#check"
+	static let leftSidedS3Gallop = "#id:chkS3 | #title:Left sided S3 gallop | #type:#check"
+	static let leftSidedS4Gallop = "#id:chkS4 | #title:Left sided S4 gallop | #type:#check"
 	static let newRales = "#id:chkMR | #title:New Rales | #type:#check"
 	static let pulmonaryEdema = "#id:chkPEd  | #title:Pulmonary edema | #type:#check"
+	static let hjr = "#id:chkhepato  | #title:Hepatojugular reflux | #type:#check"
 	//static let pulmonaryEdema = "#id:chkPEd  | #title:Pulmonary edema | #type:#check"
 	
 	static let anyCNSSymptoms = "#id:chkAMS | #title:Any CNS Symptoms | #type:#check"
 	static let coldClammyExtremities = "#id:chkshock | #title:Cold Clammy Extremities | #type:#check"
 	static let cyanosisInHeartFailure = "#id:chkCyanosis | #title:Cyanosis | #type:#check"
+	static let ascites = "#id:chkascites | #title:Ascites | #type:#check"
 	static let lowurine = "#id:chklowurine |  #title:Low Urine Output < 30ml/hr | #type: #check"
 	
 	// Heart Failure -> AHAStage

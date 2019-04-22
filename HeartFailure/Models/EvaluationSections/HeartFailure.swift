@@ -44,7 +44,7 @@ class History : EvaluationItem {
 	let newonset = EvaluationItem(literal: Presentation.newOnsetHF)
 	let chronicHF = EvaluationItem(literal: Presentation.chronicHF)
 	let hfdiagnosis = EvaluationItem(literal: Presentation.hfDiagnosisDurationPerWeek)
-	let oneormorehf = EvaluationItem(literal: Presentation.oneormorehf)
+	//let oneormorehf = EvaluationItem(literal: Presentation.oneormorehf)
 	let twounscheduled = EvaluationItem(literal: Presentation.twounscheduled)
 	let chestpain = EvaluationItem(literal: Presentation.chestpain)
 	let weightgain = EvaluationItem(literal: Presentation.weightGain)
@@ -61,7 +61,7 @@ class History : EvaluationItem {
 			chronicHF,
 			seperator,
 			hfdiagnosis,
-			oneormorehf,
+			//oneormorehf,
 			twounscheduled,
 			chestpain,
 			weightgain,
@@ -227,15 +227,18 @@ class HOCM : EvaluationItem {
 
 class Clinical : EvaluationItem {
 	
-	let lvef = EvaluationItem(literal: Presentation.lvef)
+	//let lvef = EvaluationItem(literal: Presentation.lvef)
 	let rasat = EvaluationItem(literal: Presentation.rasat)
 	let vo2sat = EvaluationItem(literal: Presentation.vo2sat)
-	let hjr = EvaluationItem(literal: Presentation.hepatojulularReflux)
+	let hepato = EvaluationItem(literal: Presentation.hepatojulularReflux)
+	let hjr = EvaluationItem(literal: Presentation.hjr)
 	let jugular = EvaluationItem(literal: Presentation.jugularVenousDistention)
 	let edema = EvaluationItem(literal: Presentation.edemaInHeartFailure)
-	let leftside = EvaluationItem(literal: Presentation.leftSidedS3S4Gallop)
+	let leftsideS3 = EvaluationItem(literal: Presentation.leftSidedS3Gallop)
+	let leftsideS4 = EvaluationItem(literal: Presentation.leftSidedS4Gallop)
 	let newrales = EvaluationItem(literal: Presentation.newRales)
 	let pulmonaryedema = EvaluationItem(literal: Presentation.pulmonaryEdema)
+	let ascites = EvaluationItem(literal: Presentation.ascites)
 	let lowurine = EvaluationItem(literal: Presentation.lowurine)
 	let anycns = EvaluationItem(literal: Presentation.anyCNSSymptoms)
 	let coldclammy = EvaluationItem(literal: Presentation.coldClammyExtremities)
@@ -243,15 +246,18 @@ class Clinical : EvaluationItem {
 	
 	override var items : [EvaluationItem] {
 		return [
-			lvef,
+			//lvef,
 			rasat,
 			vo2sat,
-			hjr,
+			hepato,
 			jugular,
 			edema,
-			leftside,
+			leftsideS3,
+			leftsideS4,
 			newrales,
 			pulmonaryedema,
+			hjr,
+			ascites,
 			lowurine,
 			anycns,
 			coldclammy,
