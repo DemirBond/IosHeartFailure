@@ -316,6 +316,10 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate, KBNumberPadDelegate {
 	// MARK: - UITextField delegates
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
+		if let supperView = self.superview as? UITableView, supperView.isResetting {
+			self.cellModel.storedValue?.value = nil
+			return
+		}
 		let strInput = textField.text
 		
 		do {

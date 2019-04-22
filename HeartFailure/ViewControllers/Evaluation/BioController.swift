@@ -196,9 +196,12 @@ class BioController: BaseTableController, NVActivityIndicatorViewable { //, UITa
 		
 		// Reset Fields
 		actions.append(MenuAction(title: "Reset Fields", handler: {
+			self.tableView.isResetting = true
 			self.resetFields(items: self.pageForm.items)
-			
-			self.tableView.reloadData()
+			self.tableView.reloadDataThenPerform {
+				self.view.endEditing(true)
+				self.tableView.isResetting = false
+			}
 		}))
 		
 		self.showDropMenu(actions: actions)

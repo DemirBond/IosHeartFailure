@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EA4403A226D548400D0543B /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA44039226D548400D0543B /* UITableView+Extensions.swift */; };
 		789268A51E6478C80018FEF5 /* Evaluation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 789268A31E6478C80018FEF5 /* Evaluation.xcdatamodeld */; };
 		7893A5E42144969700FE6B71 /* VideoTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893A5E32144969700FE6B71 /* VideoTutorialViewController.swift */; };
 		78AD64FE48E351E06A7C3DE3 /* Pods_HeartFailure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E236DCEFCA820D098C973F /* Pods_HeartFailure.framework */; };
@@ -128,6 +129,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EA44039226D548400D0543B /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		789268A41E6478C80018FEF5 /* Evaluation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Evaluation.xcdatamodel; sourceTree = "<group>"; };
 		7893A5E32144969700FE6B71 /* VideoTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTutorialViewController.swift; sourceTree = "<group>"; };
 		78BF73E41E3F640F0040EC81 /* Heart Failure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart Failure.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -274,6 +276,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EA44038226D546800D0543B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0EA44039226D548400D0543B /* UITableView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		78BF73DB1E3F640F0040EC81 = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +322,7 @@
 		78BF73E61E3F640F0040EC81 /* HeartFailure */ = {
 			isa = PBXGroup;
 			children = (
+				0EA44038226D546800D0543B /* Extensions */,
 				BA49CCA61F33A35E0040060A /* Models */,
 				BA49CD291F33A6FE0040060A /* Networking */,
 				BA49CD1C1F33A6B00040060A /* Literals */,
@@ -670,7 +681,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = IgorKhomiak;
 				TargetAttributes = {
 					78BF73E31E3F640F0040EC81 = {
@@ -692,10 +703,9 @@
 			};
 			buildConfigurationList = 78BF73DF1E3F640F0040EC81 /* Build configuration list for PBXProject "HeartFailure" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -882,6 +892,7 @@
 				BADA70521F7662E600B83DC4 /* KBNumberPad.swift in Sources */,
 				BA7B02071F7EE49B00637FB8 /* CodeAuthRequest.swift in Sources */,
 				BA49CCD41F33A35E0040060A /* DataManager.swift in Sources */,
+				0EA4403A226D548400D0543B /* UITableView+Extensions.swift in Sources */,
 				BA49CCF91F33A4220040060A /* RootViewController.swift in Sources */,
 				BA49CC9C1F33A0C90040060A /* RateController.swift in Sources */,
 				BA49CC7A1F339FDD0040060A /* ResetAccountController.swift in Sources */,
@@ -993,6 +1004,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1000,6 +1012,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1048,6 +1061,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1055,6 +1069,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
