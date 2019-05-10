@@ -271,10 +271,10 @@ struct HMS {
 	static let blnB = "#id:chkB| #title:Structural Heart Disease, but without Signs/Symptoms of HF | #type:#check"
 	static let blnC = "#id:chkC| #title:Structural Heart Disease with Prior or Current Symptoms of HF | #type:#check"
 	static let blnD = "#id:chkD| #title:Refactory HF Requiring Specialized Interventions | #type:#disclosureControl"
-	static let blnNYHA1 = "#id:chkNYHA1| #title:NYHA/CCVS CLASS 1 | #type:#check"
-	static let blnNYHA2 = "#id:chkNYHA2| #title:NYHA/CCVS CLASS 2 | #type:#check"
-	static let blnNYHA3 = "#id:chkNYHA3| #title:NYHA/CCVS CLASS 3 | #type:#check"
-	static let blnNYHA4 = "#id:chkNYHA4| #title:NYHA/CCVS CLASS 4 | #type:#check"
+	static let blnNYHA1 = "#id:chkNYHA1| #title:NYHA/CCVS CLASS 1 | #type:#radio | #group: (chkNYHA1, chkNYHA2,chkNYHA3,chkNYHA4)"
+	static let blnNYHA2 = "#id:chkNYHA2| #title:NYHA/CCVS CLASS 2 | #type:#radio | #group: (chkNYHA1, chkNYHA2,chkNYHA3,chkNYHA4)"
+	static let blnNYHA3 = "#id:chkNYHA3| #title:NYHA/CCVS CLASS 3 | #type:#radio | #group: (chkNYHA1, chkNYHA2,chkNYHA3,chkNYHA4)"
+	static let blnNYHA4 = "#id:chkNYHA4| #title:NYHA/CCVS CLASS 4 | #type:#radio | #group: (chkNYHA1, chkNYHA2,chkNYHA3,chkNYHA4)"
 	
 	// Advanced LHF -> Heart Failure -> Stage/Class -> Refactory HF
 	static let calculateHFSSLabel = "#id:CalculateHFSS | #title:Calculate HFSS, enter NAmeq, VO₂ max, Heart Rate, and ECG QRS Duration | #type:#label | #height:80"
