@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0EA4403A226D548400D0543B /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA44039226D548400D0543B /* UITableView+Extensions.swift */; };
+		0ED4BD9D228549A9004FDFE3 /* Compareable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED4BD9C228549A9004FDFE3 /* Compareable.swift */; };
 		789268A51E6478C80018FEF5 /* Evaluation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 789268A31E6478C80018FEF5 /* Evaluation.xcdatamodeld */; };
 		7893A5E42144969700FE6B71 /* VideoTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893A5E32144969700FE6B71 /* VideoTutorialViewController.swift */; };
 		78AD64FE48E351E06A7C3DE3 /* Pods_HeartFailure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E236DCEFCA820D098C973F /* Pods_HeartFailure.framework */; };
@@ -130,6 +131,7 @@
 
 /* Begin PBXFileReference section */
 		0EA44039226D548400D0543B /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		0ED4BD9C228549A9004FDFE3 /* Compareable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compareable.swift; sourceTree = "<group>"; };
 		789268A41E6478C80018FEF5 /* Evaluation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Evaluation.xcdatamodel; sourceTree = "<group>"; };
 		7893A5E32144969700FE6B71 /* VideoTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTutorialViewController.swift; sourceTree = "<group>"; };
 		78BF73E41E3F640F0040EC81 /* Heart Failure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart Failure.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -280,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				0EA44039226D548400D0543B /* UITableView+Extensions.swift */,
+				0ED4BD9C228549A9004FDFE3 /* Compareable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -897,6 +900,7 @@
 				BA49CC9C1F33A0C90040060A /* RateController.swift in Sources */,
 				BA49CC7A1F339FDD0040060A /* ResetAccountController.swift in Sources */,
 				BA49CCD51F33A35E0040060A /* Evaluation.swift in Sources */,
+				0ED4BD9D228549A9004FDFE3 /* Compareable.swift in Sources */,
 				BA49CD321F33A6FE0040060A /* RegisterResponse.swift in Sources */,
 				BA49CD231F33A6B00040060A /* ControllerStyle.swift in Sources */,
 				BA49CCE71F33A35E0040060A /* Laboratories.swift in Sources */,

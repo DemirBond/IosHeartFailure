@@ -260,9 +260,12 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 		}
 		else {
 			actions.append(MenuAction(title: "Reset Fields", handler: {
+				self.tableView.isResetting = true
 				self.resetFields(items: self.pageForm.items)
-				
-				self.tableView.reloadData()
+				self.tableView.reloadDataThenPerform {
+					self.view.endEditing(true)
+					self.tableView.isResetting = false
+				}
 			}))
 		}
 		
@@ -303,20 +306,24 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 	func resetFields(items: [EvaluationItem]) {
 		for item: EvaluationItem in items {
 			let type = item.form.itemType
-			if type == ItemType.textLeft || type == ItemType.decimalLeft || type == ItemType.integerLeft {
+			if type.oneOf(other: .textLeft,
+							  .decimalLeft,
+							  .decimalRight,
+							  .integerLeft,
+							  .integerRight) {
 				if let _: String = item.storedValue?.value {
 					item.storedValue?.value = nil
 				}
-			}
-			else if type == ItemType.check || type == ItemType.disclosureControl || type == ItemType.disclosureControlExpandable {
+			} else if type.oneOf(other: .check,
+										.disclosureControl,
+										.disclosureControlExpandable) {
 				if let _: Bool = item.storedValue?.isChecked {
 					item.storedValue?.isChecked = false
 				}
 				if type == ItemType.disclosureControlExpandable {
 					resetFields(items: item.items)
 				}
-			}
-			else if type == ItemType.radio {
+			} else if type.oneOf(other: .radio) {
 				if let _: String = item.storedValue?.radioGroup?.selectedRadioItem {
 					item.storedValue?.radioGroup?.selectedRadioItem = nil
 				}
