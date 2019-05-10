@@ -631,7 +631,7 @@ class CheckBoxCell: GeneratedCell {
 
 			
 			
-				print(cellModel.title)
+			print(cellModel.title)
 			print(cellModel.storedValue?.isChecked ?? false)
 			
 			// to here
@@ -640,6 +640,18 @@ class CheckBoxCell: GeneratedCell {
 			updateCell()
 			// self.delegate?.evaluationValueDidChange(model: cellModel)
 			//print("check box checked")
+			if !newValue {
+				resetSubItem(item: cellModel)
+			}
+		}
+	}
+
+	func resetSubItem(item: EvaluationItem) {
+		item.storedValue?.isChecked = false
+		item.storedValue?.radioGroup?.selectedRadioItem = nil
+
+		for subItem in item.items {
+			resetSubItem(item: subItem)
 		}
 	}
 	
