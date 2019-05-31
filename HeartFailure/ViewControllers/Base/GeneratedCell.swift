@@ -1435,5 +1435,20 @@ class OutputResultsCell: GeneratedCell {
 		self.subtitleLabel?.font = CVDStyle.style.currentFont
 		
 		self.subtitleLabel?.textColor = CVDStyle.style.defaultFontColor
+
+		let substrings = self.cellModel.subtitle ?? ""
+		var combineString = ""
+		for item in substrings.lines where !item.isEmpty {
+			combineString += "\u{2022} \(item)\n"
+		}
+		self.subtitleLabel?.text = combineString
+	}
+}
+
+extension String {
+	var lines: [String] {
+		var result: [String] = []
+		enumerateLines { line, _ in result.append(line) }
+		return result
 	}
 }
