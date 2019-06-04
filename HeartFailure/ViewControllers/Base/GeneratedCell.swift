@@ -708,7 +708,10 @@ class DisclosureControlInputCellExpandable: DisclosureControlCellExpandable {
 		super.setupCell()
 
 		let theitems = cellModel.items
-
+		self.textFieldCollection.forEach {
+			$0.textColor = CVDStyle.style.rightFieldColor
+			self.resetField(textField: $0)
+		}
 		if(cellModel.subCellsCount == 1) {
 			subCellModelOne = theitems[0]
 			self.subTextFieldOne?.placeholder = subCellModelOne?.placeHolder
@@ -755,6 +758,26 @@ class DisclosureControlInputCellExpandable: DisclosureControlCellExpandable {
 			}
 			if subCellModelThree?.storedValue?.isFilled == true {
 				updateCellThree()
+			}
+		}
+
+		for i in 0..<theitems.count {
+			let field = textFieldCollection[i]
+			let model = theitems[i]
+			field.font = CVDStyle.style.currentFont
+			field.returnKeyType = .next
+			field.placeholder = model.storedValue?.placeholder
+			field.text = model.storedValue?.value
+
+			if model.form.itemType == .integerRight || model.form.itemType == .integerLeft {
+				numberPad = KBNumberPad(padType: .Integer, returnType: .Next)
+				numberPad?.delegate = self
+				field.inputView = numberPad
+			}
+			else if model.form.itemType == .decimalRight || model.form.itemType == .decimalLeft {
+				numberPad = KBNumberPad(padType: .Decimal, returnType: .Next)
+				numberPad?.delegate = self
+				field.inputView = numberPad
 			}
 		}
 	}
@@ -804,15 +827,7 @@ class DisclosureControlInputCellExpandable: DisclosureControlCellExpandable {
 	}
 
 	override func textFieldDidEndEditing(_ textField: UITextField) {
-		if let supperView = self.superview as? UITableView, supperView.isResetting {
-			self.cellModel.storedValue?.value = nil
-			return
-		}
-
-		let strInput = textField.text
-
 		var cellModel: EvaluationItem!
-
 		switch textField {
 		case subTextFieldOne:
 			cellModel = subCellModelOne
@@ -823,6 +838,14 @@ class DisclosureControlInputCellExpandable: DisclosureControlCellExpandable {
 
 		default: ()
 		}
+
+		if let supperView = self.superview as? UITableView, supperView.isResetting {
+			cellModel.storedValue?.value = nil
+			return
+		}
+
+		let strInput = textField.text
+
 		do {
 			try cellModel.storedValue?.validateInput(inputText: strInput!)
 			cellModel.storedValue?.value = strInput!.count > 0 ? strInput : nil
@@ -858,6 +881,14 @@ class DisclosureControlInputCellExpandable: DisclosureControlCellExpandable {
 		} catch {
 			()
 		}
+	}
+
+	override func onDoneClicked(numberPad: KBNumberPad) {
+		numberPad.textInput?.resignFirstResponder()
+	}
+
+	override func onNextClicked(numberPad: KBNumberPad) {
+		numberPad.textInput?.resignFirstResponder()
 	}
 }
 
