@@ -134,7 +134,7 @@ struct HMS {
 	static let aorticStenosis = "#id:chkAorticStenosis| #title:Aortic Stenosis  | #type:#disclosureControl"
 	static let mitralStenosis = "#id:chkMitralStenosis| #title:Mitral Stenosis  | #type:#disclosureControl"
 	static let tricuspidStenosis = "#id:chkTricuspidStenosis| #title:Tricuspid Stenosis  | #type:#disclosureControl"
-	static let pulmonicStenosis = "#id:chkPulmonicStenosis| #title:Pulmonic Stenosis  | #type:#disclosureControlExpandable"
+	static let pulmonicStenosis = "#id:chkPulmonicStenosis| #title:Pulmonic Stenosis  | #type:#disclosureControlInputCellExpandable"
 	static let aorticRegurgitation = "#id:chkAorticRegurgitation| #title:Aortic Regurgitation  | #type:#disclosureControl"
 	static let primaryMitralRegurgitation = "#id:chkMitralRegurgitation| #title:Primary Mitral Regurgitation  | #type:#disclosureControl"
 	static let tricuspidRegurgitation = "#id:chkTricuspidRegurgitation| #title:Tricuspid Regurgitation  | #type:#disclosureControl"
@@ -159,7 +159,7 @@ struct HMS {
 	static let laClot = "#id:chkLAClot | #title:LA Clot | #type:#check"
 	
 	// Valvular -> Valvular -> Pulmonic Stenosis
-	static let pulmonicValveVelocity = "#id:pulmonicValveVelocity| #title:Pulmonic Valve Velocity | #type:#decimalRight | #min:0.5 | #max:5.0 | #placeholder: "
+	static let pulmonicValveVelocity = "#id:pulmonicValveVelocity| #title:Pulmonic valve velocity, m/s | #type:#decimalRight | #min:0.5 | #max:5.0 | #placeholder: Value"
 	
 	// Valvular -> Valvular -> Aortic Regurgitation
 	static let holodiastolicFlowReversal = "#id:chkHolodiastolicRev| #title:Holodiastolic Flow Reversal | #type:#check"
@@ -223,7 +223,7 @@ struct HMS {
 	static let blnLVEF = "#id:txtLVEF |    #title:LVEF|    #type:#integerRight"
 	static let blnCRTI = "#id:chkCRTI| #title:SP CRT | #type:#check"
 	
-	static let clinics = "#id:clinics| #title:Findings | #type:#disclosureWeather"
+	static let clinics = "#id:clinics| #title:Clinics | #type:#disclosureWeather"
 	static let etiology = "#id:etiology| #title:Etiology | #type:#disclosureWeather"
 	static let stageClass = "#id:stageClass| #title:Stage/Class | #type:#disclosureWeather"
 	static let arrthymias = "#id:arrthymias| #title:Arrthymias | #type:#disclosureWeather"

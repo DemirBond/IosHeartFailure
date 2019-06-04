@@ -109,7 +109,7 @@ class HypertensionController: GeneratedController {
 		cell.delegate = self
 		cell.cellModel = itemModel
 		
-		cell.updateCell()
+		cell.updateCell(model: itemModel)
 		
 		
 		switch itemModel.form.itemType {

@@ -260,7 +260,7 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate, KBNumberPadDelegate {
 			
 		}
 		
-		updateCell()
+		updateCell(model: self.cellModel)
 		
 		//print("\(cellModel.title)  -  items size \(theitems.count)")
 		
@@ -272,25 +272,27 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate, KBNumberPadDelegate {
 	}
 	
 	
-	func updateCell() {
-		
+	func updateCell(model: EvaluationItem) {
+
 		// For cells with multiple textFields in it.
 		if textFieldCollection != nil {
+			if self.isKind(of: DisclosureControlInputCellExpandable.self) {return}
 			for textFieldFomCollection in textFieldCollection {
-				
-				textFieldFomCollection.text = self.cellModel.storedValue?.value
-				
-				if [.textLeft, .integerLeft, .decimalLeft, .mail, .password].contains(where: { $0 == cellModel.form.itemType }) {
+
+				textFieldFomCollection.text = model.storedValue?.value
+
+				if [.textLeft, .integerLeft, .decimalLeft, .mail, .password].contains(where: { $0 == model.form.itemType }) {
 					textFieldFomCollection.textColor = CVDStyle.style.leftFieldColor
 				} else {
 					textFieldFomCollection.textColor = CVDStyle.style.rightFieldColor
 				}
 			}
-			
+
 		} else {
-			self.textField?.text = self.cellModel.storedValue?.value
-			
-			if [.textLeft, .integerLeft, .decimalLeft, .mail, .password].contains(where: { $0 == cellModel.form.itemType })  {
+			self.textField?.text = nil
+			self.textField?.text = model.storedValue?.value
+
+			if [.textLeft, .integerLeft, .decimalLeft, .mail, .password].contains(where: { $0 == model.form.itemType })  {
 				self.textField?.textColor = CVDStyle.style.leftFieldColor
 			} else {
 				self.textField?.textColor = CVDStyle.style.rightFieldColor
@@ -320,6 +322,7 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate, KBNumberPadDelegate {
 			self.cellModel.storedValue?.value = nil
 			return
 		}
+		if textField.oneOf(other: subTextFieldOne ?? UITextField(), subTextFieldTwo ?? UITextField() , subTextFieldThree ?? UITextField()) {return}
 		let strInput = textField.text
 		
 		do {
@@ -349,14 +352,14 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate, KBNumberPadDelegate {
 			self.delegate?.evaluationValueDidNotValidate(model: cellModel,
 				message: "Entered text into field \(cellModel.title) contains incorrect symbols".localized,
 				description: "Please remove them and try again.")
-			updateCell()
+			updateCell(model: self.cellModel)
 			
 		} catch InputError.toLong {
 			markInvalidInput()
 			self.delegate?.evaluationValueDidNotValidate(model: cellModel,
 			    message: "Entered text into field \(cellModel.title) is too long".localized,
 			    description: "Please shorten it and try again.")
-			updateCell()
+			updateCell(model: self.cellModel)
 			
 		} catch InputError.outOfBounds {
 			markInvalidInput()
@@ -637,7 +640,7 @@ class CheckBoxCell: GeneratedCell {
 			// to here
 			
 			cellModel.storedValue!.isChecked = newValue
-			updateCell()
+			updateCell(model: cellModel)
 			// self.delegate?.evaluationValueDidChange(model: cellModel)
 			//print("check box checked")
 			if !newValue {
@@ -655,8 +658,8 @@ class CheckBoxCell: GeneratedCell {
 		}
 	}
 	
-	override func updateCell() {
-		super.updateCell()
+	override func updateCell(model: EvaluationItem) {
+		super.updateCell(model: model)
 		self.icon?.image = isCheckedButton ? UIImage(named: "checkDown") : UIImage(named: "checkUp")
 		self.icon?.highlightedImage = isCheckedButton ? UIImage(named: "checkDownPressed") : UIImage(named: "checkUpPressed")
 
@@ -698,6 +701,166 @@ class DisclosureControlCell: CheckBoxCell {
 		//self.disclosureIcon?.image = isCheckedButton ?  UIImage(named: "nextGrayIcon") : UIImage(named: "nextGrayIconDisabled")
 	}
 }
+
+class DisclosureControlInputCellExpandable: DisclosureControlCellExpandable {
+
+	override func setupCell() {
+		super.setupCell()
+
+		let theitems = cellModel.items
+
+		if(cellModel.subCellsCount == 1) {
+			subCellModelOne = theitems[0]
+			self.subTextFieldOne?.placeholder = subCellModelOne?.placeHolder
+			self.subTextFieldOne?.font = CVDStyle.style.currentFont
+			if subCellModelOne?.storedValue?.isFilled == true {
+				updateCellOne()
+			}
+		}
+
+		if(cellModel.subCellsCount == 2) {
+			subCellModelOne = theitems[0]
+			subCellModelTwo = theitems[1]
+			self.subTextFieldOne?.placeholder = subCellModelOne?.placeHolder
+			self.subTextFieldTwo?.placeholder = subCellModelTwo?.placeHolder
+
+			self.subTextFieldOne?.font = CVDStyle.style.currentFont
+			self.subTextFieldTwo?.font = CVDStyle.style.currentFont
+
+			if subCellModelOne?.storedValue?.isFilled == true {
+				updateCellOne()
+			}
+			if subCellModelTwo?.storedValue?.isFilled == true {
+				updateCellTwo()
+			}
+
+		}
+
+		if(cellModel.subCellsCount == 3) {
+			subCellModelOne = theitems[0]
+			subCellModelTwo = theitems[1]
+			subCellModelThree = theitems[2]
+			self.subTextFieldOne?.placeholder = subCellModelOne?.placeHolder
+			self.subTextFieldTwo?.placeholder = subCellModelTwo?.placeHolder
+			self.subTextFieldThree?.placeholder = subCellModelThree?.placeHolder
+			self.subTextFieldOne?.font = CVDStyle.style.currentFont
+			self.subTextFieldTwo?.font = CVDStyle.style.currentFont
+			self.subTextFieldThree?.font = CVDStyle.style.currentFont
+
+			if subCellModelOne?.storedValue?.isFilled == true {
+				updateCellOne()
+			}
+			if subCellModelTwo?.storedValue?.isFilled == true {
+				updateCellTwo()
+			}
+			if subCellModelThree?.storedValue?.isFilled == true {
+				updateCellThree()
+			}
+		}
+	}
+
+	override func updateCellOne() {
+		self.subTextFieldOne?.text = subCellModelOne?.storedValue?.value
+	}
+
+	override func updateCellTwo() {
+		self.subTextFieldTwo?.text = subCellModelTwo?.storedValue?.value
+	}
+
+	override func updateCellThree() {
+		self.subTextFieldThree?.text = subCellModelThree?.storedValue?.value
+	}
+
+	func markInvalidInput(textField: UITextField) {
+		var label: UILabel!
+		switch textField {
+		case subTextFieldOne:
+			label = subLabelOne
+		case subTextFieldTwo:
+			label = subLabelTwo
+		case subTextFieldThree:
+			label = subLabelThree
+		default: ()
+		}
+		label.textColor = UIColor(palette: ColorPalette.red)
+	}
+
+	func resetField(textField: UITextField) {
+		var label: UILabel!
+		switch textField {
+		case subTextFieldOne:
+			label = subLabelOne
+		case subTextFieldTwo:
+			label = subLabelTwo
+		case subTextFieldThree:
+			label = subLabelThree
+		default: ()
+		}
+		label.textColor = CVDStyle.style.defaultFontColor
+	}
+
+	override func textFieldDidBeginEditing(_ textField: UITextField) {
+		resetField(textField: textField)
+	}
+
+	override func textFieldDidEndEditing(_ textField: UITextField) {
+		if let supperView = self.superview as? UITableView, supperView.isResetting {
+			self.cellModel.storedValue?.value = nil
+			return
+		}
+
+		let strInput = textField.text
+
+		var cellModel: EvaluationItem!
+
+		switch textField {
+		case subTextFieldOne:
+			cellModel = subCellModelOne
+		case subTextFieldTwo:
+			cellModel = subCellModelTwo
+		case subTextFieldThree:
+			cellModel = subCellModelThree
+
+		default: ()
+		}
+		do {
+			try cellModel.storedValue?.validateInput(inputText: strInput!)
+			cellModel.storedValue?.value = strInput!.count > 0 ? strInput : nil
+		} catch InputError.incorrectInput {
+			markInvalidInput(textField: textField)
+			self.delegate?.evaluationValueDidNotValidate(model: cellModel,
+																		message: "Entered text into field \(cellModel.title) contains incorrect symbols".localized,
+																		description: "Please remove them and try again.")
+			updateCell(model: cellModel)
+
+		} catch InputError.toLong {
+			markInvalidInput(textField: textField)
+			self.delegate?.evaluationValueDidNotValidate(model: cellModel,
+																		message: "Entered text into field \(cellModel.title) is too long".localized,
+																		description: "Please shorten it and try again.")
+			updateCell(model: cellModel)
+
+		} catch InputError.outOfBounds {
+			markInvalidInput(textField: textField)
+			self.delegate?.evaluationValueDidNotValidate(model: cellModel,
+																		message: "Value for “\(cellModel.title)” exceeds the limits",
+				description: "Please, use range from \(cellModel.storedValue!.minValue!) to \(cellModel.storedValue!.maxValue!)")
+			cellModel.storedValue?.value = strInput
+
+		} catch InputError.emptyInput {
+			markInvalidInput(textField: textField)
+			if cellModel.storedValue?.value != nil {
+				self.delegate?.evaluationValueDidNotValidate(model: cellModel,
+																			message: "Field \(cellModel.title) cannot be empty",
+					description: "Please fill in this field.")
+			}
+			cellModel.storedValue?.value = nil
+		} catch {
+			()
+		}
+	}
+}
+
 
 // GeneratedCell { //
 class DisclosureControlCellExpandable:  DisclosureControlCell {
@@ -1095,7 +1258,7 @@ class RadioButtonCell: GeneratedCell {
 		}
 		set {
 			cellModel.storedValue?.radioGroup!.selectItem(id: cellModel.identifier)
-			updateCell()
+			updateCell(model: cellModel)
 			self.delegate?.evaluationValueDidChange(model: cellModel)
 //			print("radio button chekced")
 //			if cellModel.title == "NYHA/CCVS Class 1" {
@@ -1115,8 +1278,8 @@ class RadioButtonCell: GeneratedCell {
 		}
 	}
 	
-	override func updateCell() {
-		super.updateCell()
+	override func updateCell(model: EvaluationItem) {
+		super.updateCell(model: model)
 		self.icon?.image = isCheckedButton ? UIImage(named: "radioDown") : UIImage(named: "radioUp")
 		self.icon?.highlightedImage = isCheckedButton ? UIImage(named: "radioDownPressed") : UIImage(named: "radioUpPressed")
 	}
@@ -1184,7 +1347,7 @@ class DisclosureSimpleCellExpandable: GeneratedCell { // GeneratedCell {
 		}
 	}
 	
-	override func updateCell() {
+	override func updateCell(model: EvaluationItem) {
 		//super.updateCell()
 		
 		self.iconOne?.image = isCheckedButtonOne ? UIImage(named: "radioDown") : UIImage(named: "radioUp")
@@ -1388,8 +1551,8 @@ class PasswordCell: GeneratedCell {}
 class CustomCell: GeneratedCell {
 	@IBOutlet weak var submitButton: UIButton!
 	
-	override func updateCell() {
-		super.updateCell()
+	override func updateCell(model: EvaluationItem) {
+		super.updateCell(model: model)
 		self.submitButton.layer.cornerRadius = 4.0
 		self.submitButton.layer.borderColor = self.submitButton.backgroundColor?.cgColor
 		self.submitButton.layer.borderWidth = 2.0
@@ -1405,8 +1568,8 @@ class DateCell: GeneratedCell {}
 
 
 class PartnerCardCell: GeneratedCell {
-	override func updateCell() {
-		super.updateCell()
+	override func updateCell(model: EvaluationItem) {
+		super.updateCell(model: model)
 		let storyboard = UIStoryboard(name: "Medical", bundle: nil)
 		let controller = storyboard.instantiateViewController(withIdentifier: "SpecialistControllerID") as! SpecialistController
 		self.backgroundView = controller.view
@@ -1414,8 +1577,8 @@ class PartnerCardCell: GeneratedCell {
 }
 
 class ReferencesCardCell: GeneratedCell {
-	override func updateCell() {
-		super.updateCell()
+	override func updateCell(model: EvaluationItem) {
+		super.updateCell(model: model)
 		let storyboard = UIStoryboard(name: "Medical", bundle: nil)
 		let controller = storyboard.instantiateViewController(withIdentifier: "ReferencesControllerID") as! ReferencesController
 		self.backgroundView = controller.view
@@ -1423,8 +1586,8 @@ class ReferencesCardCell: GeneratedCell {
 }
 
 class OutputResultsCell: GeneratedCell {
-	override func updateCell() {
-		super.updateCell()
+	override func updateCell(model: EvaluationItem) {
+		super.updateCell(model: model)
 		//self.titleLabel?.font = CVDStyle.style.fonts.last
 		//self.subtitleLabel?.font = CVDStyle.style.fonts.first
 		//self.subtitleLabel?.textColor = CVDStyle.style.subtitleColor

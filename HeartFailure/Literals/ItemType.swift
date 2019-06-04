@@ -27,7 +27,8 @@ enum ItemType: String {
 	case disclosureVieved = "#disclosureVieved"
 	case disclosureControl = "#disclosureControl"
 	case disclosureControlExpandable = "#disclosureControlExpandable"
-	
+	case disclosureControlInputCellExpandable = "#disclosureControlInputCellExpandable"
+
 	case expandableCell = "#expandableCell"
 	
 	case disclosureControlWithCheck = "#disclosureControlWithCheck"
@@ -144,6 +145,9 @@ enum ItemType: String {
 			
 		case .check, .disclosureControl, .disclosureControlExpandable:
 			return .checkValue
+
+		case .disclosureControlInputCellExpandable:
+			return .decimal
 			
 		case .textLeft, .textRight, .mail, .password:
 			return .string
@@ -191,6 +195,9 @@ enum ItemType: String {
 
 		case .disclosureControlExpandable:
 			return "DisclosureControlCellExpandable"
+
+		case .disclosureControlInputCellExpandable:
+			return "DisclosureControlInputCellExpandable"
 			
 		case .disclosureControlWithCheck:
 			return "DisclosureControlCellWithCheck"

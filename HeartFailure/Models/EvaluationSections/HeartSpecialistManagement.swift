@@ -309,8 +309,8 @@ class ValvularInValvular: EvaluationItem {
 	
 	override var items: [EvaluationItem] {
 		return [
-				lvef,
 				newOnsetAtrialFibrillation,
+				lvef,
 				pregnancyInValvular,
 				aorticStenosis,
 				mitralStenosis,

@@ -104,8 +104,13 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 			
 			let model = DataManager.manager.evaluation!.model(with: id)
 			shortcutModel = model
-			
-			let dictInfo = ["rightBottom" : shortcutModel!.title + ""]
+
+			//phillips fix
+			guard let shortcutModelTitle = shortcutModel?.title else {
+				return
+			}
+
+			let dictInfo = ["rightBottom" : shortcutModelTitle + ""]
 			
 			let toolbar = CVDToolbar()
 			toolbar.setup(dict: dictInfo, target: self, actions: bottomSelectors )
@@ -129,6 +134,7 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 		if let alert = pageForm.form.alert {
 			
 			let handler1: CVDHandler = {() in
+				DataManager.manager.resetAllPAHItems()
 				_ = self.navigationController?.popViewController(animated: true)
 			}
 			let cancelAction = CVDAction(title: "Cancel".localized, type: CVDActionType.cancel, handler: handler1, short: false)
@@ -238,7 +244,7 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 	
 	
 	override func rightMenuButtonAction(_ sender: UIBarButtonItem) {
-		
+		self.view.endEditing(true)
 		var actions = [MenuAction] ()
 		
 		if pageForm.title == DataManager.manager.evaluation!.outputInMain.title {
@@ -542,7 +548,7 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 		
 		cell.cellModel = itemModel
 		
-		cell.updateCell()
+		cell.updateCell(model: itemModel)
 
 		// Laboratories only logic
 		//let classType = type(of:pageForm)
@@ -623,7 +629,7 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 			
 			hideKeyboard()
 		 
-		case .disclosureControlExpandable:
+		case .disclosureControlExpandable, .disclosureControlInputCellExpandable:
 			//let cell = tableView.cellForRow(at: indexPath) as! RightIntegerCellExpandable
 			//cellExpanded = !cellExpanded
 			let cell = tableView.cellForRow(at: indexPath) as! DisclosureControlCellExpandable			
@@ -676,6 +682,23 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 				return 55
 			}
 			
+		}
+
+		if itemModel.form.itemType.oneOf(other: .disclosureControlInputCellExpandable) {
+			if itemModel.isExpanded {
+				if itemModel.subCellsCount == 3 {
+					return 220
+				}
+				else if  itemModel.subCellsCount == 2{
+					return 165
+				}
+				else { //if  itemModel.subCellsCount == 1{
+					return 110
+				}
+			}
+			else {
+				return 55
+			}
 		}
 		
 		if (itemModel.form.itemType == .integerRightExpandable) {

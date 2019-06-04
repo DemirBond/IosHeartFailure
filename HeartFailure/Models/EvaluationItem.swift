@@ -93,7 +93,8 @@ class EvaluationItem  {
 	var subtitle: String?
 	var radioGroups = [RadioGroup]()
 	let dependancy: Dependancy?
-	
+	var placeHolder: String?
+
 	let subItems = [EvaluationItem]()
 	
 	var subCellsCount = 0
@@ -274,7 +275,7 @@ class EvaluationItem  {
 	}
 	
 	
-	init(id: String = "default", title: String? = "unknown", subtitle: String? = nil, text: String? = nil,
+	init(id: String = "default", title: String? = "unknown", subtitle: String? = nil, text: String? = nil, placeholder: String? = nil,
 	     form: ItemForm? = ItemForm(), dependancy: Dependancy? = nil,
 	     stored: StoredValue? = nil ) {
 		
@@ -285,6 +286,7 @@ class EvaluationItem  {
 		self.form = form!
 		self.dependancy = dependancy
 		self.outputText = text
+		self.placeHolder = placeholder
 	}
 	
 	
@@ -422,7 +424,7 @@ class EvaluationItem  {
 			Dependancy(dependsOn: dependsOn!, dependMinValue: dependMin!, dependMaxValue: dependMax!) : nil
 		
 		let form = ItemForm(type: itemType, height: height, selected: selected, alert: alert)
-		self.init(id: itemId, title: itemTitle, subtitle: itemSubtitle, text: text,
+		self.init(id: itemId, title: itemTitle, subtitle: itemSubtitle, text: text, placeholder: valuePlaceholder,
 		          form: form, dependancy: dependancyStruct, stored: storedValue)
 	}
 	
