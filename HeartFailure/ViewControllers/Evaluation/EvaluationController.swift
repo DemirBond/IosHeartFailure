@@ -206,7 +206,21 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 		                  actions: actions)
 	}
 
-	
+	func showAlert(title: String, description: String?, models: [EvaluationItem], doneModel: EvaluationItem) {
+
+		var alertActions = [CVDAction] ()
+		for item in models {
+			let handler = createHandler(model: item, navigation: self.navigationController)
+			let navigateAction = CVDAction(title: item.title, type: CVDActionType.done, handler: handler, short: false)
+			alertActions.append(navigateAction)
+		}
+		let handler = createHandler(model: doneModel, navigation: self.navigationController)
+		let noneAction = CVDAction(title: "None".localized, type: CVDActionType.done, handler: handler, short: false)
+		alertActions.append(noneAction)
+
+		self.showCVDAlert(title: title, message: description, actions: alertActions)
+	}
+
 	func showAlert(title: String, description: String?, models: [EvaluationItem]) {
 		
 		var alertActions = [CVDAction] ()
@@ -227,8 +241,9 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 		let model = DataManager.manager.evaluation!
 		
 		let alertTitle = "Cannot open form \(item.title)"
-		
-		if DataManager.manager.evaluation!.evaluationStatus == .initialized {
+
+		switch DataManager.manager.evaluation!.evaluationStatus {
+		case .initialized:
 			let storyboard = UIStoryboard(name: "Medical", bundle: nil)
 			let alertDescription = "Please fill out the Bio form first.".localized
 			let handler1 = {() in
@@ -240,16 +255,15 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 			let cancelAction = CVDAction(title: "Cancel".localized, type: CVDActionType.cancel, handler: nil, short: false)
 			let navigateAction = CVDAction(title: "Open " + model.bio.title, type: CVDActionType.done, handler: handler1, short: false)
 			self.showCVDAlert(title: alertTitle, message: alertDescription, actions: [navigateAction, cancelAction])
-			
-		}
-        else if DataManager.manager.evaluation!.evaluationStatus == .bioCompleted  {
-		}
-		else if DataManager.manager.evaluation!.evaluationStatus == .riskCompleted {
+		case .bioCompleted: ()
+			let alertDescription = "Please fill out the form \(model.riskFactors.title)"
+			showAlert(title: alertTitle, description: alertDescription, models: [model.riskFactors], doneModel: item)
+		case .riskCompleted:
 			let alertDescription = "Please fill out the form \(model.diagnostics.title)"
 			showAlert(title: alertTitle, description: alertDescription, models: [model.diagnostics])
-			
-		}            
-        else if DataManager.manager.evaluation!.evaluationStatus == .diagnosticCompleted {
+		case .diagnosticCompleted: ()
+
+		default: ()
 		}
 	}
 	
@@ -279,10 +293,10 @@ class EvaluationController: BaseTableController, NVActivityIndicatorViewable {
 			let navigateAction = CVDAction(title: "Open ".localized + model.bio.title, type: CVDActionType.done, handler: handler1, short: false)
 			self.showCVDAlert(title: alertTitle, message: alertDescription, actions: [navigateAction, cancelAction])
 			
-		} else if DataManager.manager.evaluation!.evaluationStatus == .bioCompleted {
+		} /*else if DataManager.manager.evaluation!.evaluationStatus == .bioCompleted {
 			let alertDescription = "Please fill out the form \(model.riskFactors.title)"
 			showAlert(title: alertTitle, description: alertDescription, models: [model.riskFactors])
-		}
+		}*/
 			
 		// Removed because of task CVD-220 [IOS] Unable to compute evaluation
 		/*
