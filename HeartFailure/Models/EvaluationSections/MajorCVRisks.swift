@@ -18,32 +18,44 @@ class MajorCVRisks: EvaluationItem {
 	let tobaccoUse = EvaluationItem(literal: Presentation.tobaccoUse)
 	let familyHistory = EvaluationItem(literal: Presentation.familyHistory)
 	let ckd = EvaluationItem(literal: Presentation.ckd)
-	
+	let alcohol  = Alcohol(literal: Presentation.alchoholReg)
 	override var items: [EvaluationItem] {
 		return [
 			diabetes,
 			systemicArterialHypertension,
 			tobaccoUse,
+			alcohol,
 			familyHistory,
-			ckd
+			//ckd
 		]
 	}
 }
 
+// Alcohol Use
+class Alcohol: EvaluationItem {
+	
+	let alcoholHeavy = EvaluationItem(literal: Presentation.alchoholHeavy)
+	
+	override var items: [EvaluationItem] {
+		return [alcoholHeavy]
+	}
+}
 
 // MARK: - MajorCVRisks -> Diabetes
 
 class Diabetes: EvaluationItem {
 	
-	let typeIIDM = TypeIIDM(literal: Presentation.typeIIDM)
-	let typeIDM = TypeIDM(literal: Presentation.typeIDM)
+//	let typeIIDM = TypeIIDM(literal: Presentation.typeIIDM)
+//let typeIDM = TypeIDM(literal: Presentation.typeIDM)
+	let type1DM = TypeIDM(literal: Presentation.diabetestypeIDM)
+	let type2DM = TypeIDM(literal: Presentation.diabetestypeIIDM)
 	let gestationalDM = EvaluationItem(literal: Presentation.gestationalDM)
 	let retinopathy = EvaluationItem(literal: Presentation.retinopathy)
 	
 	override var items: [EvaluationItem] {
 		return [
-			//typeIIDM,
-			//typeIDM,
+			type1DM,
+			type2DM,
 			//gestationalDM,
 			//retinopathy
 		]

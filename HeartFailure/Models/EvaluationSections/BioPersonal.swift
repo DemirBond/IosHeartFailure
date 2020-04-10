@@ -40,18 +40,24 @@ class BioPersonal: EvaluationItem {
 	let bioPregnancy = EvaluationItem(literal: Presentation.bioPregnancy)
 	let bioO2sat = EvaluationItem(literal: Presentation.bioO2sat)
 	
+	let temp = EvaluationItem(literal: Presentation.bioTemp)
+	let respitory = EvaluationItem(literal: Presentation.bioResp)
+	
 	override var items: [EvaluationItem] {
 		return [
 			name,
 			age,
 			gender,
-			bmi,
-			weight,
-			heartRate,
 			sbp,
 			dbp,
+			heartRate,
+			respitory,
+			temp,
 			bioOrthostaticSBP,
 			bioOrthostaticSymptoms,
+			bmi,
+			weight,
+			
 			bioWaistCirc,
 			bioAA,
 			bioPregnancy,

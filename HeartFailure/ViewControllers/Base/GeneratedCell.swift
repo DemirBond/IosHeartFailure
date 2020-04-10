@@ -1143,7 +1143,7 @@ class DisclosureControlCellExpandable:  DisclosureControlCell {
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
-		//self.subLabelOne?.text = "fuck" // subCellModelOne.title
+		//self.subLabelOne?.text = "" // subCellModelOne.title
 		
 		let theitems = cellModel.items
 		

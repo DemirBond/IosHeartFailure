@@ -76,6 +76,7 @@ class Evaluation: EvaluationItem {
 	let thromboembolicVKA = ThromboembolicVKA(literal: Presentation.thromboembolicVKA)
 	let bradyarrthymiaSyncope = BradyarrthymiaSyncope(literal: Presentation.bradyarrthymiaSyncope)
 	let ventricularTachyarrthymias = VentricularTachyarrthymias(literal: Presentation.ventricularTachyarrthymias)
+	let renalFailure = RenalFailure(literal: Presentation.renalFailure)
 	let riskFactors = MajorCVRisks(literal: Presentation.riskFactors)
 	let laboratories = Laboratories(literal: Presentation.laboratories)
 	let diagnostics = Diagnostics(literal: Presentation.diagnostics)
@@ -91,6 +92,7 @@ class Evaluation: EvaluationItem {
 			thromboembolicVKA,
 			bradyarrthymiaSyncope,
 			ventricularTachyarrthymias,
+			renalFailure,
 			riskFactors,
 			laboratories,
 			diagnostics

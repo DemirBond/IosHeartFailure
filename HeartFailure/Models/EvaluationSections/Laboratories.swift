@@ -33,30 +33,42 @@ class Laboratories: EvaluationItem {
 	let platelet = EvaluationItem(literal: Presentation.platelet)
 	let ntProBNPPgMl = EvaluationItem(literal: Presentation.ntProBNPPgMl)
 	let bnpPgMl = EvaluationItem(literal: Presentation.bnpPgMl)
+	let lactate = EvaluationItem(literal: Presentation.lactate)
 	let albuminuriaMgGmOrMg24hr = EvaluationItem(literal: Presentation.albuminuriaMgGmOrMg24hr)
+	
+	let flcaSerum = EvaluationItem(literal: Presentation.flca)
+	let tsat = EvaluationItem(literal: Presentation.tsat)
+	let ferritin = EvaluationItem(literal: Presentation.ferritin)
 	
 	override var items: [EvaluationItem] {
 		return [
 			chemBasicLabel,
 			nameqlValue,
 			kmeql,
-			creatinineMgDl,
-			bunMgDl,
 			hco3,
-			fastingPlasmaGlucose,
+			
+			bunMgDl,
+			creatinineMgDl,
 			gfrMlMin173M2,
 			worseningRenalFx,
+			fastingPlasmaGlucose,
+			hba1c,
+			
 						
 			othersLabel,
-			hba1c,
+			ntProBNPPgMl,
+			bnpPgMl,
+			lactate,
 			albumin,
 			inr,
 			ast,
 			bilirubin,
 			hematocrit,
 			platelet,
-			ntProBNPPgMl,
-			bnpPgMl,
+			
+			flcaSerum,
+			ferritin,
+			tsat,
 			albuminuriaMgGmOrMg24hr,
 		]
 	}

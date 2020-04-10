@@ -44,9 +44,6 @@ struct HMS {
 	static let orthostaticSBP = "#id:orthostaticSBP | #title:Orthostatic SBP | #type:#integerRight | #min:0 | #max:240 | #placeholder: DBP mmHg "
 	static let orthostaticSymptoms = "#id:chkSymptomatic|       #title:Orthostatic Symptoms|  #type:#check"
 
-	static let orthostaticSymptomsq = "#id:chkSymptomatic|       #title:Orthostatic Symptoms jizz faggot|  #type:#check"
-	static let orthostaticSymptomsqw = "#id:chkSymptomatic|       #title:Orthostatic Symptoms fuck penis|  #type:#check"
-	static let orthostaticSymptomsqwe = "#id:chkSymptomatic|       #title:Orthostatic Symptoms fuck penis kosf|  #type:#check"
 	
 	static let NYHACCSVClass1 = "#id:chkNYHA1 | #title:NYHA/CCSV Class1 | #type:#check"
 	static let NYHACCSVClass2 = "#id:chkNYHA2 | #title:NYHA/CCSV Class2 | #type:#check"

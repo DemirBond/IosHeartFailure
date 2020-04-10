@@ -16,6 +16,7 @@
 		78BF73EF1E3F640F0040EC81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78BF73EE1E3F640F0040EC81 /* Assets.xcassets */; };
 		78BF73FD1E3F640F0040EC81 /* HeartFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BF73FC1E3F640F0040EC81 /* HeartFailureTests.swift */; };
 		78BF74081E3F640F0040EC81 /* HeartFailureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BF74071E3F640F0040EC81 /* HeartFailureUITests.swift */; };
+		78D82BBC23AB015E004F262F /* RenalFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D82BBB23AB015E004F262F /* RenalFailure.swift */; };
 		78FCA8002019FCC500DD095F /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78FCA7F62019FCC200DD095F /* OpenSans-Light.ttf */; };
 		78FCA8012019FCC500DD095F /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78FCA7F72019FCC200DD095F /* OpenSans-Italic.ttf */; };
 		78FCA8022019FCC500DD095F /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78FCA7F82019FCC200DD095F /* OpenSans-SemiBold.ttf */; };
@@ -145,6 +146,7 @@
 		78BF74071E3F640F0040EC81 /* HeartFailureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartFailureUITests.swift; sourceTree = "<group>"; };
 		78BF74091E3F640F0040EC81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78BF74171E3F690F0040EC81 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = text; path = iTunesArtwork; sourceTree = "<group>"; };
+		78D82BBB23AB015E004F262F /* RenalFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenalFailure.swift; sourceTree = "<group>"; };
 		78FCA7F62019FCC200DD095F /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		78FCA7F72019FCC200DD095F /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		78FCA7F82019FCC200DD095F /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -492,6 +494,7 @@
 				BA49CCBA1F33A35E0040060A /* Diagnostics.swift */,
 				BA49CCBB1F33A35E0040060A /* HeartSpecialistManagement.swift */,
 				BA49CCC21F33A35E0040060A /* Output.swift */,
+				78D82BBB23AB015E004F262F /* RenalFailure.swift */,
 			);
 			path = EvaluationSections;
 			sourceTree = "<group>";
@@ -820,7 +823,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HeartFailure/Pods-HeartFailure-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-HeartFailure/Pods-HeartFailure-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -835,7 +838,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HeartFailure/Pods-HeartFailure-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeartFailure/Pods-HeartFailure-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -865,6 +868,7 @@
 				BA49CC891F33A0410040060A /* EvaluationListController.swift in Sources */,
 				BA49CCF51F33A35E0040060A /* StoredValue.swift in Sources */,
 				BA2EF1FC1F6CA96700098BC0 /* AtrialFibrilation.swift in Sources */,
+				78D82BBC23AB015E004F262F /* RenalFailure.swift in Sources */,
 				BA2EF2001F6CA9A800098BC0 /* BradyarrthymiaSyncope.swift in Sources */,
 				BAC5E5C41F390E400093E5A3 /* TaskCompletedController.swift in Sources */,
 				BA49CD241F33A6B00040060A /* General.swift in Sources */,
@@ -1121,6 +1125,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/HeartFailure/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.medicalsoftware.HeartFailure;
 				PRODUCT_NAME = "Heart Failure";
 				PROVISIONING_PROFILE = "";
@@ -1148,6 +1153,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/HeartFailure/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.medicalsoftware.HeartFailure;
 				PRODUCT_NAME = "Heart Failure";
 				PROVISIONING_PROFILE = "";

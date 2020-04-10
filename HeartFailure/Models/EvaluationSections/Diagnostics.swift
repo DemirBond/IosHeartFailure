@@ -17,16 +17,35 @@ class Diagnostics: EvaluationItem {
 	let stressTesting = StressTesting(literal: Presentation.stressTesting)
 	let echocardiography = Echocardiography(literal: Presentation.echocardiography)
 	let rhc = RHC(literal: Presentation.rhc)
-
+	let chestX = ChestXray(literal: Presentation.chestXray)
+	
 	override var items: [EvaluationItem] {
 		return [
 			ekg,
-			stressTesting,
+			//stressTesting,
 			echocardiography,
+			chestX,
 			rhc,
 		]
 	}
 }
+
+class ChestXray: EvaluationItem {
+	let chestRightPE = EvaluationItem(literal: Presentation.chestRightPleuralEffusion)
+	let chestLeftPE = EvaluationItem(literal: Presentation.chestLeftPleuralEffusion)
+	let chestPulmonaryEd = EvaluationItem(literal: Presentation.chestPulmonaryEd)
+	let chestEnlargedCardiac = EvaluationItem(literal: Presentation.chestEnlargedCardiac)
+	
+	override var items:[EvaluationItem] {
+		return [
+			chestRightPE,
+			chestLeftPE,
+			chestPulmonaryEd,
+			chestEnlargedCardiac,
+		]
+	}
+}
+
 
 
 // MARK: - Diagnostics -> EKG
@@ -36,7 +55,7 @@ class EKG: EvaluationItem {
 	let NSRInEKG = EvaluationItem(literal: Presentation.nsrInEKG)
 	let svt = EvaluationItem(literal: Presentation.svt)
 	let atrialFibrillationInEKG = EvaluationItem(literal: Presentation.atrialFibrillationInEKG)
-	let atrialFlutter = AtrialFlutter(literal: Presentation.atrialFlutter)
+	let atrialFlutter = EvaluationItem(literal: Presentation.atrialFlutter)
 	let prDuration  = EvaluationItem(literal: Presentation.prDuration)
 	let qrsDuration = EvaluationItem(literal: Presentation.qrsDuration)
 	let qtcDuration = EvaluationItem(literal: Presentation.qtcDuration)
@@ -47,22 +66,25 @@ class EKG: EvaluationItem {
 	let lbbb = EvaluationItem(literal: Presentation.lbbb)
 	let bifascicular = EvaluationItem(literal: Presentation.bifascicular)
 	let wpw = EvaluationItem(literal: Presentation.wpw)
-	
+	let rbb = EvaluationItem(literal: Presentation.rbbb)
+	let vpace = EvaluationItem(literal: Presentation.vpace)
 	override var items: [EvaluationItem] {
 		return [
+			prDuration,
+			qrsDuration,
+			qtcDuration,
 			NSRInEKG,
 			svt,
 			atrialFibrillationInEKG,
 			atrialFlutter,
-			prDuration,
-			qrsDuration,
-			qtcDuration,
-			nonspecificSTAbnormality,
+			lbbb,
+			rbb,
+			//nonspecificSTAbnormality,
 			lvh,
 			lowVoltageQRS,
 			abnormalQWaves,
-			lbbb,
-			bifascicular,
+			vpace,
+			//bifascicular,
 			wpw,
 		]
 	}
@@ -176,10 +198,10 @@ class Echocardiography: EvaluationItem {
 	let pericardialEffusion = EvaluationItem(literal: Presentation.pericardialEffusion)
 	let rwma = EvaluationItem(literal: Presentation.rwma)
 	let enlargedLAOrLVH = EvaluationItem(literal: Presentation.enlargedLAOrLVH)
-	let ea05AndDTMore280ms = EvaluationItem(literal: Presentation.ea05AndDTMore280ms)
-	let gradeMore2DiastolicDysfunction = EvaluationItem(literal: Presentation.gradeMore2DiastolicDysfunction)
+	let ealessthan05 = EvaluationItem(literal: Presentation.ea05AndDTMore280ms)
+	let ealessthan2andmorethan08 = EvaluationItem(literal: Presentation.gradeMore2DiastolicDysfunction)
 	let respiratoryIVSShift = EvaluationItem(literal: Presentation.respiratoryIVSShift)
-	let mitralEVariation = EvaluationItem(literal: Presentation.mitralEVariation)
+	let mitralEVariation = EvaluationItem(literal: Presentation.mitralEVariation1)
 	let hepaticVeinExpDiastolicReversal = EvaluationItem(literal: Presentation.hepaticVeinExpDiastolicReversal)
 	let enlargedRA = EvaluationItem(literal: Presentation.enlargedRA)
 	let enlargedRV = EvaluationItem(literal: Presentation.enlargedRV)
@@ -187,23 +209,59 @@ class Echocardiography: EvaluationItem {
 	let lvLaterealAnnulusEE = EvaluationItem(literal: Presentation.lvLaterealAnnulusEE)
 	let lvefInEchocardiography = EvaluationItem(literal: Presentation.lvefInEchocardiography)
 	let trjVelocityMsec = EvaluationItem(literal: Presentation.trjVelocityMsec)
+	let lvhe = EvaluationItem(literal: Presentation.lvhe)
+	let eamorethanorequal2 = EvaluationItem(literal: Presentation.eaMoreThan280ms)
+	let primaryMitralRegurgitation = PrimaryMitralRegurgitation(literal: HMS.primaryMitralRegurgitation)
+	override var items: [EvaluationItem] {
+		return [
+			lvefInEchocardiography,
+			lvLaterealAnnulusEE,
+			mitralEVariation,
+			
+			//pericardialEffusion,
+			//rwma,
+			enlargedLAOrLVH,
+			lvhe,
+			
+			ealessthan05,
+			eamorethanorequal2,
+			ealessthan2andmorethan08,
+			
+			trjVelocityMsec,
+			enlargedRA,
+			enlargedRV,
+			
+			
+			//respiratoryIVSShift,
+			
+			//hepaticVeinExpDiastolicReversal,
+			
+			midsystolicNotch,
+			primaryMitralRegurgitation,
+		]
+	}
+}
+
+
+class MitralRgurgitation: EvaluationItem {
+	
+	let holodiastolicFlowReversal = EvaluationItem(literal: HMS.holodiastolicFlowReversal)
+	let venaContractaWidth = EvaluationItem(literal: HMS.venaContractaWidth)
+	let regurgitantVolumeMlBeat = EvaluationItem(literal: HMS.regurgitantVolumeMlBeat)
+	let regurgitantFraction = EvaluationItem(literal: HMS.regurgitantFraction)
+	let ero = EvaluationItem(literal: HMS.ero)
+	let lveddmm = EvaluationItem(literal: HMS.lveddmm)
+	let lvesdmm = EvaluationItem(literal: HMS.lvesdmm)
+	let aorticRootDiameter = EvaluationItem(literal: HMS.aorticRootDiameter)
 	
 	override var items: [EvaluationItem] {
 		return [
-			pericardialEffusion,
-			rwma,
-			enlargedLAOrLVH,
-			ea05AndDTMore280ms,
-			gradeMore2DiastolicDysfunction,
-			respiratoryIVSShift,
-			mitralEVariation,
-			hepaticVeinExpDiastolicReversal,
-			enlargedRA,
-			enlargedRV,
-			midsystolicNotch,
-			lvLaterealAnnulusEE,
-			lvefInEchocardiography,
-			trjVelocityMsec
+			venaContractaWidth,
+			regurgitantVolumeMlBeat,
+			regurgitantFraction,
+			ero,
+			lveddmm,
+			lvesdmm
 		]
 	}
 }

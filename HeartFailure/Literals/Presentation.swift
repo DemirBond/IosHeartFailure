@@ -76,6 +76,7 @@ struct Presentation {
 	static let atrialFibrillation = "#id:atrialFibrillation | #title:Atrial Fibrillation | #type:#disclosureWeather"
 	static let thromboembolicVKA = "#id:thromboembolicVKA | #title:Thromboembolic/VKA | #type:#disclosureWeather"
 	static let ventricularTachyarrthymias = "#id:ventricularTachyarrthymias | #title:Ventricular Tachyarrthymias | #type:#disclosureWeather"
+	static let renalFailure = "#id: renalFailure | #title: Renal Failure | #type:#disclosureWeather"
 	static let bradyarrthymiaSyncope = "#id:bradyarrthymiaSyncope | #title:Bradyarrthymia/Syncope | #type:#disclosureWeather"
 	static let riskFactors = 	"#id:riskFactors| #title:Major CV Risk Factors| #type:#disclosureVieved"
 	static let laboratories = "#id:laboratories| #title:Laboratories| #type:#disclosureVieved"
@@ -114,13 +115,15 @@ struct Presentation {
 	static let maleInHMS = 		"#id:maleInHMS|    #title:Male|    #type:#radio | #group: (maleInHMS, femaleInHMS)"
 	static let femaleInHMS = 		"#id:femaleInHMS|    #title:Female|    #type:#radio | #group: (maleInHMS, femaleInHMS)"
 	
+	static let bioResp = "#id:resprate  |  #title:Respiratory rate |    #type:#integerLeft| #min:10|  #max:50"
+	static let bioTemp = "#id:temp  |  #title:Temp/C |    #type:#integerLeft| #min:20|  #max:44"
 	
 	//
 	// MARK: - Heart Failure
 	//
 	static let history = "#id:sechistory|#title:History |#type:#disclosureSimple"
 	static let etiology = "#id:secEtiology|#title:Etiology |#type:#disclosureSimple"
-	static let clinical = "#id:secclinical|#title:Clinical Presentation |#type:#disclosureSimple"
+	static let clinical = "#id:secclinical|#title:Clinics |#type:#disclosureSimple"
 	static let ahastage = "#id:secahastage|#title:AHA Stage / NYHA Class |#type:#disclosureSimple"
 	static let hometherapeutics = "#id:sechometherapeutics|#title:Home Therapeutics |#type:#disclosureSimple"
 	static let acutely = "#id:secacutely|#title:Acutely |#type:#check"
@@ -138,10 +141,12 @@ struct Presentation {
 	static let weightGain = "#id:chkWeight|    #title:Weight gain|    #type:#check"
 	static let dyspneaonexe = "#id:chkDOE | #title:Dyspnea on exertion | #type:#disclosureControl"
 	//static let dyspneaAtRestOrphopnea = "#id:chkdysp|    #title:Dyspnea at Rest|    #type:#disclosureControlExpandable"
-	static let dyspneaAtRestOrphopnea = "#id:chkdysp|    #title:Dyspnea at Rest|    #type:#check"
+	static let dyspneaAtRestOrphopnea = "#id:chkdysp|    #title:Dyspnea at rest|    #type:#check"
+	static let pndInROS = "id:chkPND| #title: Paroxysmal nocturnal dyspnea| #type:#check"
+	static let orthopneaInROS = "id:chkorthopnea| #title: Orthopnea| #type:#check"
 	static let spicd = "#id:chkICD |    #title:S/P AICD|    #type:#check"
-	static let spbivppm = "#id:chkCRTI |    #title:S/P BIVPACER | #type: #check"
-	static let spppmrv = "#id:chkPPM |    #title:S/P PPM RV LEAD ONLY | #type: #check"
+	static let spbivppm = "#id:chkCRTI |    #title:S/P CRT | #type: #check"
+	static let spppmrv = "#id:chkPPM |    #title:S/P PPM RV lead only | #type: #check"
 	
 	// Heart Failure -> History -> Dyspneaonexe
 	static let class1 = "#id:chkclass1 |    #title:Dyspnea on strenous exertion | #type: #radio | #group:(chkclass1, chkclass2, chkclass3)"
@@ -203,6 +208,9 @@ struct Presentation {
 	static let ascites = "#id:chkascites | #title:Ascites | #type:#check"
 	static let lowurine = "#id:chklowurine |  #title:Low Urine Output < 30ml/hr | #type: #check"
 	
+	static let carpalTunnel = "#id:chkcarpal |  #title:Carpal Tunnel | #type: #check"
+	static let peripheralNeuro = "#id:chkneuropathy |  #title: Peripheral Neuropathy | #type: #check"
+	
 	// Heart Failure -> AHAStage
 	static let atHighRiskOfHF = "#id:chkA|    #title:At High Risk for HF, but without Structural Heart Disease or Symptoms of HF NYHA/CCVS Class 0|    #type:#check"
 	static let structuralHeartDeseaseNoSymptoms = "#id:chkB| #title:Structural Heart Disease, but without signs/symptoms of HF|    #type:#check"
@@ -222,9 +230,16 @@ struct Presentation {
 	static let bBlocker = "#id:chkcar | #title:B Blocker | #type:#disclosureControl"
 	static let acelARB = "#id:chkace | #title:Acel/ARB | #type:#disclosureControl"
 	static let poDiuretic = "#id:chkdiuretic | #title:PO Diuretic | #type:#disclosureControl"
-	static let ccbOtherVasolidators = "#id:chkCCB | #title:CCB, Other Vasolidators | #type:#check"
+	static let ccbOtherVasolidators = "#id:chkCCB | #title:CCB | #type:#disclosureControlExpandable"
 	static let currentVKATherapy = "#id:chkVKA| #title:Current VKA Therapy | #type:#check"
-	static let vasodilator = "#id:chkvasodilator |  #title:Vasodilator | #type: #check"
+	static let vasodilator = "#id:chkvasodilator |  #title:Vasodilator | #type: #disclosureControlExpandable"
+	
+	// CCB
+	static let ccbDihydrop = "#id:chkdihydropyridine| #title:Dihydropyridine | #type:#check"
+	static let ccbNonDihydrop = "#id:chknondihydropyridine| #title:Non-Dihydropyridine | #type:#check"
+	// Vasodialor
+	static let vasoHydra = "#id:chkhydralazine| #title:Hydralazine | #type:#check"
+	static let vasoNirate = "#id:chknitrate| #title:Nitrates | #type:#check"
 	
 	// Heart Failure -> Hometherapeutics -> B Blocker
 	static let carvedilol3125bid = "#id:chkBisoprolol25 | #title:Carvedilol 3.125 bid | #type:#check"
@@ -369,6 +384,7 @@ struct Presentation {
 	static let des = "#id:chkDES | #title:DES | #type:#check"
 	static let cabg = "#id:chkCABG | #title:CABG | #type:#disclosureControlExpandable"
 	
+	
 	//	Coronary Heart Disease -> PCI/CABG -> CABG https://zpl.io/1H0tEY
 	static let autoVein = "#id:chkautovein | #title:Auto Vein | #type:#check"
 	static let autoArtery = "#id:chkautoartery | #title:Auto Artery | #type:#check"
@@ -455,6 +471,24 @@ struct Presentation {
 	
 	
 	//
+	// MARK: - Renal
+	//
+	static let acuteRF = "#id:chkWG | #title: Acute Renal Failure / Worsening Renal Function | #type:#disclosureControl"
+	static let chronicKD = "#id:chkCKD | #title: Chronic kidney disease | #type:#disclosureControlExpandable"
+	
+	// Renal -> Acute Renal Failure / Worsening Renal Function
+	static let crinic = "#id:txtcr| #title:Increase in SCrx baseline | #type:#decimalRight | #min:1.0 | #max:10.0 | #placeholder: Baseline"
+	static let cr48h = "#id:txtcrinc| #title: Increase in SCr by mg in 48hr | #type:#decimalRight | #min:0.1 | #max:112.0 | #placeholder: Value"
+	static let urinvolume = "#id:txturine| #title:Urine Volume | #type:#decimalRight | #min:0.0 | #max:200.0 | #placeholder: ml/kg/h"
+
+	// Renal -> Chronic kidney disease
+	static let renalImage = "#id:chkrenalimage| #title:Abnormal Renal Imaging | #type:#check"
+	static let histology = "#id:chkhistology| #title:Abnormal Laboratory | #type:#check"
+
+	
+	
+	
+	//
 	// MARK: - Bradyarrthymia
 	//
 	static let clinicalSynscopeBradyarrthymia = "#id:chksyncope | #title:Clinical Syncope | #type:#label"
@@ -473,9 +507,18 @@ struct Presentation {
 	//
 	// MARK: - Major CV Risk Factors https://zpl.io/1OuArq
 	//
-	static let diabetes = "#id:diabetes | #title:Diabetes | #type:#disclosureControl"
+	//old diabetes Phillip chnages
+	//static let diabetes = "#id:diabetes | #title:Diabetes | #type:#disclosureControl"
+	
+	static let diabetes = "#id:diabetes | #title:Diabetes | #type:#disclosureControlExpandable"
+	static let diabetestypeIIDM = "#id:chkDM | #title:Type II DM | #type:#check"
+	static let diabetestypeIDM = "#id:chkDM1 | #title:Type I DM | #type:#check"
+	
+	
 	static let systemicArterialHypertension = "#id:chkSAH | #title:Systemic Arterial Hypertension | #type:#disclosureControl" // WithCheck"
 	static let tobaccoUse = "#id:chkSmoke | #title:Tobacco Use | #type:#check"
+	static let alchoholReg = "id:chkalcohol | #title:Alcohol Use | #type:#disclosureControlExpandable"
+	static let alchoholHeavy = "id:chkheavyalcohol | #title:More than 2 drinks/day | #type:#check"
 	static let familyHistory = "#id:chkFamily | #title:Family History | #type:#check"
 	static let ckd = "#id:chkckd | #title:CKD | #type:#check"
 	
@@ -542,6 +585,7 @@ struct Presentation {
 	
 	static let lipidProfileLabel = "#id:lipidProfileLabel | #title:Lipid Profile | #type:#label"
 	static let alreadyOnStatin = "#id:chkalready | #title:Already on Statin | #type:#check"
+	
 	static let statinIntolerance = "#id:chkstatint | #title:Statin Intolerance | #type:#check"
 	static let cholesterol = "#id:txtCholesterol | #title:Cholesterol |#type:#integerRight | #min:40 | #max:500 | #placeholder: Value"
 	static let trg = "#id:txtTRG | #title:TRG |#type:#integerRight | #min:25 | #max:25000 | #placeholder: Value"
@@ -562,7 +606,11 @@ struct Presentation {
 	static let platelet = "#id:txtplatelet | #title:Platelet K/ml |#type:#decimalRight | #min:0.5 | #max:100.0 | #placeholder: K/ml"
 	static let ntProBNPPgMl = "#id:txtproBNP | #title:NT-proBNP pg/ml |#type:#integerRight | #min:50 | #max:100000 | #placeholder: pg/ml"
 	static let bnpPgMl = "#id:txtBNP | #title:BNP pg/ml |#type:#integerRight | #min:10 | #max:100000 | #placeholder: BNP pg/ml"
+	static let lactate = "#id:lactate | #title:Lactate mmol/L | #type:#decimalRight | #min:0.0001 | #max:100.0 | #placeholder: Value"
 	static let albuminuriaMgGmOrMg24hr = "#id:txtMICRO | #title:Albuminuria Mg.Gm or Mg/24hr |#type:#integerRight | #min:1 | #max:10000 | #placeholder: Mg.Gm or Mg/24hr"
+	static let flca = "#id:txtFLCA | #title:Serum Free Kappa/Lambda |#type:#decimalRight | #min:0.01 | #max:100.0 | #placeholder: Value"
+	static let tsat = "#id:txtTSAT | #title:Transferrin Saturation |#type:#integerRight | #min:3 | #max:25 | #placeholder: Value"
+	static let ferritin = "#id:txtferritin | #title:Ferritin ug/L |#type:#integerRight | #min:3 | #max:25 | #placeholder: Value"
 	
 	// Laboratories -> Abnormal urine sediment
 	static let abnormalurinsediment = "#id:chksediment | #title:Abnormal urine sediment | #type:#disclosureControl"
@@ -581,12 +629,13 @@ struct Presentation {
 	static let echocardiography = "#id:chkEcho | #title:Echocardiography | #type:#disclosureControl"
 	static let hrct = "#id:chkHRCT | #title:High resolution CT | #type:#disclosureControl"
 	static let rhc = "#id:chkHC | #title:RHC | #type:#disclosureControl | #alert: Refer to Heart Failure Specialist for Management"
+	static let chestXray = "#id:chkchestxray | #title:Chest X-Ray | #type:#disclosureControl"
 	
 	// Diagnostics -> EKG
 	static let nsrInEKG = "#id:chkNSR| #title: Normal sinus rhtym| #type:#check"
 	static let svt = "#id:chkPSVT| #title:Supraventricular tachycardia | #type:#check"
 	static let atrialFibrillationInEKG = "#id:chkatrialfib | #title:Atrial Fibrillation | #type:#check"
-	static let atrialFlutter = "#id:chkflutter | #title:Atrial Flutter | #type:#disclosureControlExpandable"
+	static let atrialFlutter = "#id:chkflutter | #title:Atrial Flutter | #type:#check"
 	static let prDuration  = "#id:txtPRduration | #title:PR Duration |#type:#integerRight | #min:0 | #max:10000 | #placeholder: duration"
 	static let qrsDuration = "#id:txtQRS | #title:QRS Duration |#type:#integerRight | #min:0 | #max:10000 | #placeholder: duration"
 	static let qtcDuration = "#id:txtQTC | #title:QTC Duration |#type:#integerRight | #min:0 | #max:10000 | #placeholder: duration"
@@ -653,18 +702,31 @@ struct Presentation {
 	// Diagnostics -> Echocardiography
 	static let pericardialEffusion = "#id:chkpericardial | #title:Pericardial Effusion | #type:#check"
 	static let rwma = "#id:chkRWMA | #title:RWMA | #type:#check"
-	static let enlargedLAOrLVH = "#id:chkEnlargedLA | #title:Enlarged LA or LVH | #type:#check"
-	static let ea05AndDTMore280ms = "#id:chkLVeccenticity | #title:E/A < 0.5 and DT > 280ms | #type:#check"
-	static let gradeMore2DiastolicDysfunction = "#id:chkMPI | #title:Grade ≥ 2 Diastolic Dysfunction | #type:#check"
+	static let lvhe = "#id:chkLVHE| #title:LVH | #type:#check"
+	static let enlargedLAOrLVH = "#id:txtEnlargedLA | #title:LA vol.index | #type:#integerRight | #min:1 | #max:30 | #placeholder: Value"
+	
+	static let ea05AndDTMore280ms = "#id:chkMPI1 | #title:E/A less than or equal to 0.8 | #type:#check"
+	static let eaMoreThan280ms = "#id:chkMPI1 | #title:E/A more than or equal to 2 | #type:#check"
+	
+	
+	static let gradeMore2DiastolicDysfunction = "#id:chkMPI2 | #title:E/A less than 2 and more than 0.8 | #type:#check"
 	static let respiratoryIVSShift = "#id:chkIVSshift | #title:Respiratory IVS Shift | #type:#check"
 	static let mitralEVariation = "#id:chkmitralE | #title:Mitral E Variation | #type:#check"
 	static let hepaticVeinExpDiastolicReversal = "#id:chkhepatic | #title:Hepatic Vein Exp Diastolic Reversal | #type:#check"
 	static let enlargedRA = "#id:chkEnlargedRA | #title:Enlarged RA | #type:#check"
 	static let enlargedRV = "#id:chkEnlargedRV | #title:Enlarged RV | #type:#check"
 	static let midsystolicNotch = "#id:chkmidsystolicn | #title:Midsystolic Notch | #type:#check"
-	static let lvLaterealAnnulusEE = "#id:txtMP | #title:LV Latereal Annulus E/E' |#type:#integerRight | #min:1 | #max:30 | #placeholder: Value"
+	static let lvLaterealAnnulusEE = "#id:txtMP | #title:Mitral E/E (average)' |#type:#integerRight | #min:1 | #max:30 | #placeholder: Value"
+	static let mitralEVariation1 = "#id:chkmitralE | #title:Mitral E wave cm/s' |#type:#integerRight | #min:30 | #max:300 | #placeholder: Value"
 	static let lvefInEchocardiography = "#id:txtEF | #title:LVEF |#type:#integerRight | #min:10 | #max:80 | #placeholder: LVEF"
 	static let trjVelocityMsec = "#id:txtTRJ | #title:TRJ Velocity m/sec |#type:#integerRight | #min:1 | #max:6 | #placeholder: Value"
+	
+	// Diagnostics -> Chest X-Ray
+	static let chestRightPleuralEffusion = "#id:chkRPLE | #title: Right Pleural Effusion | #type:#check"
+	static let chestLeftPleuralEffusion = "#id:chkLPLE | #title:Left Pleural Effusion | #type:#check"
+	static let chestPulmonaryEd = "#id:chkpuledema | #title:Pulmonary Edema | #type:#check"
+	static let chestEnlargedCardiac = "#id:chkenlarcar | #title: Enlarged Cardiac Solhouette | #type:#check"
+	
 	
 	// Diagnostics -> High resolution CT
 	static let ground = "#id:chkground | #title:Ground glass infiltrates | #type:#check"

@@ -50,6 +50,10 @@ class History : EvaluationItem {
 	let weightgain = EvaluationItem(literal: Presentation.weightGain)
 	let dyspneaonexe = Dyspneaonexe(literal: Presentation.dyspneaonexe)
 	let dyspneaatrest = DyspneaonRest(literal: Presentation.dyspneaAtRestOrphopnea)
+	
+	let pndInROS = EvaluationItem(literal: Presentation.pndInROS)
+	let orthopneaInROS = EvaluationItem(literal: Presentation.orthopneaInROS)
+	
 	let spicd = EvaluationItem(literal: Presentation.spicd)
 	let spbivppm = EvaluationItem(literal: Presentation.spbivppm)
 	let spppmrv = EvaluationItem(literal: Presentation.spppmrv)
@@ -63,10 +67,15 @@ class History : EvaluationItem {
 			hfdiagnosis,
 			//oneormorehf,
 			twounscheduled,
-			chestpain,
-			weightgain,
+			
+			
 			dyspneaonexe,
 			dyspneaatrest,
+			pndInROS,
+			orthopneaInROS,
+			weightgain,
+			chestpain,
+			seperator,
 			spicd,
 			spbivppm,
 			spppmrv
@@ -227,7 +236,7 @@ class HOCM : EvaluationItem {
 
 class Clinical : EvaluationItem {
 	
-	//let lvef = EvaluationItem(literal: Presentation.lvef)
+	let lvef = EvaluationItem(literal: Presentation.lvef)
 	let rasat = EvaluationItem(literal: Presentation.rasat)
 	let vo2sat = EvaluationItem(literal: Presentation.vo2sat)
 	let hepato = EvaluationItem(literal: Presentation.hepatojulularReflux)
@@ -244,14 +253,17 @@ class Clinical : EvaluationItem {
 	let coldclammy = EvaluationItem(literal: Presentation.coldClammyExtremities)
 	let cyanosis = EvaluationItem(literal: Presentation.cyanosisInHeartFailure)
 	
+	let carpal = EvaluationItem(literal: Presentation.carpalTunnel)
+	let peripheralNuero = EvaluationItem(literal: Presentation.peripheralNeuro)
+	
 	override var items : [EvaluationItem] {
 		return [
-			//lvef,
+			lvef,
 			rasat,
 			vo2sat,
 			hepato,
 			jugular,
-			edema,
+			
 			leftsideS3,
 			leftsideS4,
 			newrales,
@@ -259,9 +271,13 @@ class Clinical : EvaluationItem {
 			hjr,
 			ascites,
 			lowurine,
-			anycns,
+			
 			coldclammy,
-			cyanosis
+			cyanosis,
+			edema,
+			carpal,
+			anycns,
+			peripheralNuero
 		]
 	}
 }
@@ -282,14 +298,14 @@ class AHAStage : EvaluationItem {
 	
 	override var items: [EvaluationItem] {
 		return [
-			athighrisk,
-			nosignsofhf,
-			symptomsofhf,
-			advancedhf,
 			nyhaclass1,
 			nyhaclass2,
 			nyhaclass3,
-			nyhaclass4
+			nyhaclass4,
+			advancedhf,
+			athighrisk,
+			nosignsofhf,
+			symptomsofhf,
 		]
 	}
 }
@@ -302,12 +318,22 @@ class AdvancedHF : EvaluationItem {
 	let calculatehfss = EvaluationItem(literal: Presentation.calculateHFSS)
 	let noSignificantComorbidities = EvaluationItem(literal: Presentation.noSignificantComorbidities)
 	let vo2maxkg = EvaluationItem(literal: Presentation.vo2maxkg)
+	let onmaximumtoleB = EvaluationItem(literal: Presentation.onmaximumtoleB)
+	let onmaximumtole = EvaluationItem(literal: Presentation.onmaximumtole)
+	let chronicinotro = EvaluationItem(literal: Presentation.chronicintro)
+	let intermitt = EvaluationItem(literal: Presentation.intermitt)
+	let pre6m = EvaluationItem(literal: Presentation.predischarge6mw)
 	
 	override var items : [EvaluationItem] {
 		return [
 			calculatehfss,
 			noSignificantComorbidities,
-			vo2maxkg
+			vo2maxkg,
+			pre6m,
+			onmaximumtoleB,
+			onmaximumtole,
+			chronicinotro,
+			intermitt
 		]
 	}
 }
@@ -321,8 +347,8 @@ class Hometherapeutics : EvaluationItem {
 	let acelARB = AcelARB(literal: Presentation.acelARB)
 	let poDiuretic = PODiuretic(literal: Presentation.poDiuretic)
 	let currentvka = EvaluationItem(literal: Presentation.currentVKATherapy)
-	let ccb = EvaluationItem(literal: Presentation.ccbOtherVasolidators)
-	let vasodilator = EvaluationItem(literal: Presentation.vasodilator)
+	let ccb = CCB(literal: Presentation.ccbOtherVasolidators)
+	let vasodilator = Vasodialor(literal: Presentation.vasodilator)
 	
 	override var items : [EvaluationItem] {
 		return [
@@ -330,8 +356,33 @@ class Hometherapeutics : EvaluationItem {
 			acelARB,
 			poDiuretic,
 			currentvka,
-			ccb,
-			vasodilator
+			
+			vasodilator,
+			ccb
+		]
+	}
+}
+
+class CCB: EvaluationItem {
+	let ccbDihydrop = EvaluationItem(literal: Presentation.ccbDihydrop)
+	let ccbNonDihydrop = EvaluationItem(literal: Presentation.ccbNonDihydrop)
+	
+	override var items : [EvaluationItem] {
+		return [
+			ccbDihydrop,
+			ccbNonDihydrop
+		]
+	}
+}
+
+class Vasodialor: EvaluationItem {
+	let vasoHydra = EvaluationItem(literal: Presentation.vasoHydra)
+	let vasoNirate = EvaluationItem(literal: Presentation.vasoNirate)
+	
+	override var items : [EvaluationItem] {
+		return [
+			vasoHydra,
+			vasoNirate
 		]
 	}
 }
@@ -504,11 +555,11 @@ class InHospitalTherapies : EvaluationItem {
 			o2supplement,
 			ultrafil,
 			iabp,
-			temporarypm,
-			onmaximumtoleB,
-			onmaximumtole,
-			chronicinotro,
-			intermitt
+			temporarypm
+//			onmaximumtoleB,
+//			onmaximumtole,
+//			chronicinotro,
+//			intermitt
 		]
 	}
 }
