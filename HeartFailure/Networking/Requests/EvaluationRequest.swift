@@ -19,11 +19,25 @@ struct EvaluationRequest{
 	var name: String
 	var gender: Int
 	var SBP: Int
+	var txtNumberSBP: Int?
+	var txtDurationSBP: Int?
 	var DBP: Int
+	var txtNumberDBP: Int?
 	var inputs: String
 	
 	func toDictionary() -> Dictionary<String, AnyObject> {
 		var dict = ["age": age as AnyObject, "isPAH": isPAH as AnyObject, "gender": gender as AnyObject, "SBP": SBP as AnyObject, "DBP": DBP as AnyObject, "forHF" : "true" as AnyObject,  "inputs": inputs as AnyObject]
+		
+		if SBP > 130 && txtNumberSBP != nil {
+			dict["txtNumberSBP"] = txtNumberSBP! as AnyObject
+		} else if SBP < 90 && txtDurationSBP != nil {
+			dict["txtDurationSBP"] = txtDurationSBP! as AnyObject
+		}
+
+		if DBP > 80 && txtNumberDBP != nil {
+			dict["txtNumberDBP"] = txtNumberDBP! as AnyObject
+		}
+
 
 		
 		if (isSave) {

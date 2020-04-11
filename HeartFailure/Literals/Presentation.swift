@@ -99,8 +99,15 @@ struct Presentation {
 	static let bmi = 		"#id:txtBMI|    #title:BMI|    #type:#integerLeft|   #min:10.0|  #max:50.0"
 	static let weight = 		"#id:weight|    #title:Weight|    #type:#integerLeft|   #min:40|  #max:400"
 	static let heartRate = 	"#id:txtHR| #title:Heart Rate| #type:#integerLeft| #min:30|  #max:300"
-	static let bioSBP = 		"#id:sbp|       #title:SBP|  #type:#decimalLeft| #min:60|  #max:300| #mandatory: 1"
-	static let bioDBP = 		"#id:dbp|       #title:DBP|  #type:#decimalLeft| #min:30|  #max:160 | #mandatory: 1"
+	
+	static let bioSBP = 		"#id:sbp|       #title:SBP|  #type:#sbpExpandable| #min:60|  #max:300| #mandatory: 1"
+	static let bioSBPNumber130 = "#id:txtNumberSBP | #title:How many times |#type:#integerRight | #min:1 | #max:20 | #placeholder: jt | #dependsOn: bioSBP| #dependMin: 60| #dependMax: 300"
+	static let bioSBPNumber90 = "#id:txtDurationSBP | #title:How many minutes |#type:#integerRight | #min:1 | #max:20 | #placeholder: jt | #dependsOn: bioSBP| #dependMin: 60| #dependMax: 300"
+
+	static let bioDBP = 		"#id:dbp|       #title:DBP|  #type:#dbpExpandable| #min:30|  #max:160| #mandatory: 1"
+	static let bioDBPNumber80 = "#id:txtNumberDBP | #title:How many times |#type:#integerRight | #min:1 | #max:20 | #placeholder: jt | #dependsOn: bioDBP| #dependMin: 30| #dependMax: 160"
+
+
 	static let bioOrthostaticSBP = 		"#id:txtOrthostaticSBP|       #title:Orthostatic SBP|  #type:#decimalLeft| #min:0|  #max:240"
 	static let bioOrthostaticSymptoms = "#id:chkSymptomatic|    #title:Orthostatic Symptoms | #type:#check"
 	static let bioWaistCirc = "#id:waist | #title:Waist Circ. |  #type:#decimalLeft| #min:20|  #max:60"

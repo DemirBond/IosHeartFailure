@@ -55,6 +55,20 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate, KBNumberPadDelegate {
 	@IBOutlet weak var subLabelTwo: UILabel?
 	@IBOutlet weak var subLabelThree: UILabel?
 	
+
+
+	@IBOutlet weak var sbpSubTextField: UITextField!
+	@IBOutlet weak var sbpSubLabel: UILabel!
+	@IBOutlet weak var sbpInfoLabel: UILabel!
+
+	@IBOutlet weak var dbpSubTextField: UITextField!
+	@IBOutlet weak var dbpSubLabel: UILabel!
+	@IBOutlet weak var dbpInfoLabel: UILabel!
+
+	var subCellSbpModel90:EvaluationItem?
+	var subCellSbpModel130:EvaluationItem?
+	var subCellDbpModel80:EvaluationItem?
+	
 	@IBOutlet weak var subTextFieldOne: UITextField?
 	@IBOutlet weak var subTextFieldTwo: UITextField?
 	@IBOutlet weak var subTextFieldThree: UITextField?
@@ -258,16 +272,37 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate, KBNumberPadDelegate {
 			self.subLabelTwo?.text = subCellModelTwo?.title
 			self.subLabelThree?.text = subCellModelThree?.title
 			
+//			if let textInt = cellModel.storedValue?.value, let value = Int(textInt), value > 0 {
+//				if cellModel.form.itemType == .sbpExpandable {
+//					cellModel.subCellsCount = theitems.count
+//					if value > 130 {
+//							subCellSbpModel130 = EvaluationItem(literal: Presentation.bioSBPNumber130)
+//							sbpInfoLabel?.text = "Value is greater than 130. Please give additional details."
+//							sbpSubLabel?.text = subCellSbpModel130?.title
+//					} else if value < 90 {
+//						sbpInfoLabel?.text = "Value is less than 90. Please give additional details."
+//						subCellSbpModel90 = EvaluationItem(literal: Presentation.bioSBPNumber90)
+//						sbpSubLabel?.text = subCellSbpModel90?.title
+//					}
+//
+//					sbpSubTextField.textColor = CVDStyle.style.rightFieldColor
+//				} else if cellModel.form.itemType == .dbpExpandable && value > 80 {
+//					cellModel.subCellsCount = theitems.count
+//					subCellDbpModel80 = EvaluationItem(literal: Presentation.bioDBPNumber80)
+//					dbpSubLabel?.text = subCellDbpModel80?.title
+//					dbpInfoLabel?.text = "Value is greater than 80. Please give additional details"
+//					dbpSubTextField.textColor = CVDStyle.style.rightFieldColor
+//				}
+//
+//			}
+			//updateCell(model: self.cellModel)
+			
 		}
 		
 		updateCell(model: self.cellModel)
 		
 		//print("\(cellModel.title)  -  items size \(theitems.count)")
-		
-		for i in theitems {
-			let t = i.title
-			//print("      title - \(t)")
-		}
+
 		
 	}
 	
@@ -322,8 +357,20 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate, KBNumberPadDelegate {
 			self.cellModel.storedValue?.value = nil
 			return
 		}
-		if textField.oneOf(other: subTextFieldOne ?? UITextField(), subTextFieldTwo ?? UITextField() , subTextFieldThree ?? UITextField()) {return}
+		
 		let strInput = textField.text
+		
+		if textField.oneOf(other: subTextFieldOne ?? UITextField(),
+		subTextFieldTwo ?? UITextField(),
+		subTextFieldThree ?? UITextField(),
+		sbpSubTextField ?? UITextField(),
+		dbpSubTextField ?? UITextField()) {
+			
+				return
+			}
+
+
+
 		
 		do {
 			try cellModel.storedValue?.validateInput(inputText: strInput!)
@@ -331,19 +378,12 @@ class GeneratedCell: UITableViewCell, UITextFieldDelegate, KBNumberPadDelegate {
 			
 			if (cellModel.form.itemType == .integerRightExpandable && textField == self.textField) {
 				
-				let intInput = Int(strInput!)
-				
-				//print("input value - \(String(describing: intInput))")
-				if (intInput! < 130) {
+				if let strNumber = strInput, let intInput = Int(strNumber), intInput < 130 {
 					//print("should be expanded")
 					cellModel.isExpanded = true
 					self.delegate?.evaluationFieldTogglesDropDown()
 					
-				}
-				else {
-					//print("should not be expanded")
-					cellModel.isExpanded = false
-					self.delegate?.evaluationFieldTogglesDropDown()
+				
 				}
 				
 			}
@@ -892,6 +932,228 @@ class DisclosureControlInputCellExpandable: DisclosureControlCellExpandable {
 	}
 }
 
+class SBPCellExpandable: GeneratedCell {
+
+	override func setupCell() {
+		super.setupCell()
+
+		let theitems = cellModel.items
+		sbpSubTextField.textColor = CVDStyle.style.rightFieldColor
+
+		cellModel.subCellsCount = theitems.count
+		
+		if let textInt = cellModel.storedValue?.value, let value = Int(textInt), value > 0 {
+			cellModel.subCellsCount = theitems.count
+			if value > 130 {
+				subCellSbpModel130 = EvaluationItem(literal: Presentation.bioSBPNumber130)
+				sbpInfoLabel?.text = "Value is greater than 130. Please give additional details."
+				sbpSubLabel?.text = subCellSbpModel130?.title
+				sbpSubTextField?.text = subCellSbpModel130?.storedValue
+			} else if value < 90 {
+				sbpInfoLabel?.text = "Value is less than 90. Please give additional details."
+				subCellSbpModel90 = EvaluationItem(literal: Presentation.bioSBPNumber90)
+				sbpSubLabel?.text = subCellSbpModel90?.title
+				sbpSubTextField?.text = subCellSbpModel90?.storedValue
+			}
+			sbpSubTextField.textColor = CVDStyle.style.rightFieldColor
+		} else {
+			// TODO: zero out the sub field?
+			subCellSbpModel130 = EvaluationItem(literal: Presentation.bioSBPNumber130)
+			subCellSbpModel90 = EvaluationItem(literal: Presentation.bioSBPNumber90)
+			sbpSubTextField?.text = nil
+		}
+
+		updateCell(model: self.cellModel)
+	}
+	
+	
+	override func textFieldDidEndEditing(_ textField: UITextField) {
+
+		if sbpSubTextField == textField {
+			let subStrInput = textField.text
+			// store subcell value and return
+			do {
+				if let strNumber = subStrInput, let intInput = Int(strNumber) {
+					try cellModel.storedValue?.validateInput(inputText: strInput!)
+					if intInput > 130 {
+						subCellSbpModel130.storedValue?.value = subStrInput
+					} else if intInput < 90 {
+						subCellSbpModel90.storedValue?.value = subStrInput
+					}
+				}
+			} catch InputError.incorrectInput {
+				markInvalidInput()
+				self.delegate?.evaluationValueDidNotValidate(model: cellModel,
+					message: "Entered text into field \(cellModel.title) contains incorrect symbols".localized,
+					description: "Please remove them and try again.")
+				updateCell(model:  self.cellModel)
+				return
+			} catch InputError.toLong {
+				markInvalidInput()
+				self.delegate?.evaluationValueDidNotValidate(model: cellModel,
+					 message: "Entered text into field \(cellModel.title) is too long".localized,
+					 description: "Please shorten it and try again.")
+				updateCell(model: self.cellModel)
+				return
+			} catch {
+				()
+			}
+			return
+		}
+
+		if let supperView = self.superview as? UITableView, supperView.isResetting {
+			self.cellModel.storedValue?.value = nil
+			return
+		}
+
+		let strInput = textField.text
+
+		do {
+			try cellModel.storedValue?.validateInput(inputText: strInput!)
+			self.cellModel.storedValue?.value = strInput!.count > 0 ? strInput : nil
+		} catch InputError.incorrectInput {
+			markInvalidInput()
+			self.delegate?.evaluationValueDidNotValidate(model: cellModel,
+				message: "Entered text into field \(cellModel.title) contains incorrect symbols".localized,
+				description: "Please remove them and try again.")
+			updateCell(model:  self.cellModel)
+			return
+		} catch InputError.toLong {
+			markInvalidInput()
+			self.delegate?.evaluationValueDidNotValidate(model: cellModel,
+				 message: "Entered text into field \(cellModel.title) is too long".localized,
+				 description: "Please shorten it and try again.")
+			updateCell(model: self.cellModel)
+			return
+		} catch {
+			()
+		}
+
+		// save subfield values
+		if let strNumber = strInput, let intInput = Int(strNumber) {
+			var subFields = [EvaluationItem]()
+			if intInput > 130 {
+				sbpInfoLabel?.text = "Value is greater than 130. Please give additional details."
+				sbpSubLabel?.text = subCellSbpModel130?.title
+
+				subCellSbpModel130?.storedValue?.value = strNumber
+				subFields.append(subCellSbpModel130!)
+			} else if intInput < 90 {
+				sbpInfoLabel?.text = "Value is less than 90. Please give additional details."
+				sbpSubLabel?.text = subCellSbpModel90?.title
+
+				subCellSbpModel90?.storedValue?.value = strNumber
+				subFields.append(subCellSbpModel90!)
+			}
+
+			self.cellModel.subItems = subFields
+		}
+
+		// handle expanding
+		
+		if let strNumber = strInput, let intInput = Int(strNumber), (intInput > 130 || intInput < 90) {
+			cellModel.isExpanded = true
+		}
+		else {
+			cellModel.isExpanded = false
+		}
+		setupCell()
+		// update table view
+		self.delegate?.evaluationFieldTogglesDropDown()
+
+	}
+
+
+} // end SBPCellExpandable
+
+
+class DBPCellExpandable: GeneratedCell {
+
+	override func setupCell() {
+		super.setupCell()
+		
+		subCellDbpModel80 = EvaluationItem(literal: Presentation.bioDBPNumber80)
+
+		dbpSubTextField.textColor = CVDStyle.style.rightFieldColor
+
+		let theitems = cellModel.items
+		
+
+		if let textInt = cellModel.storedValue?.value, let value = Int(textInt), value > 0, value > 80 {
+			cellModel.subCellsCount = theitems.count
+			
+			dbpSubLabel?.text = subCellDbpModel80?.title
+			dbpInfoLabel?.text = "Value is greater than 80. Please give additional details"
+			dbpSubTextField.textColor = CVDStyle.style.rightFieldColor
+		} else {
+			// TODO: zero out the sub field?
+		}
+
+		updateCell(model: self.cellModel)
+	}
+	
+	override func textFieldDidEndEditing(_ textField: UITextField) {
+
+		if let supperView = self.superview as? UITableView, supperView.isResetting {
+			self.cellModel.storedValue?.value = nil
+			return
+		}
+
+		let strInput = textField.text
+
+		do {
+			try cellModel.storedValue?.validateInput(inputText: strInput!)
+			self.cellModel.storedValue?.value = strInput!.count > 0 ? strInput : nil
+		} catch InputError.incorrectInput {
+			markInvalidInput()
+			self.delegate?.evaluationValueDidNotValidate(model: cellModel,
+				message: "Entered text into field \(cellModel.title) contains incorrect symbols".localized,
+				description: "Please remove them and try again.")
+			updateCell(model:  self.cellModel)
+			return
+		} catch InputError.toLong {
+			markInvalidInput()
+			self.delegate?.evaluationValueDidNotValidate(model: cellModel,
+				 message: "Entered text into field \(cellModel.title) is too long".localized,
+				 description: "Please shorten it and try again.")
+			updateCell(model: self.cellModel)
+			return
+		} catch {
+			()
+		}
+
+		// save subfield values
+		if let strNumber = strInput, let intInput = Int(strNumber) {
+			var subFields = [EvaluationItem]()
+			if intInput > 80 {
+				dbpSubLabel?.text = subCellDbpModel80?.title
+				dbpInfoLabel?.text = "Value is greater than 80. Please give additional details"
+
+				subCellDbpModel80?.storedValue?.value = strNumber
+				subFields.append(subCellDbpModel80!)
+			}
+
+			self.cellModel.subItems = subFields
+		}
+
+		// handle expanding
+		if let strNumber = strInput, let intInput = Int(strNumber), intInput > 80 {
+			cellModel.isExpanded = true
+		}
+		else {
+			cellModel.isExpanded = false
+		}
+		setupCell()
+		// update table view
+		self.delegate?.evaluationFieldTogglesDropDown()
+	}
+
+
+
+
+} // end DBPCellExpandable
+
+
 
 // GeneratedCell { //
 class DisclosureControlCellExpandable:  DisclosureControlCell {
@@ -985,6 +1247,7 @@ class DisclosureControlCellExpandable:  DisclosureControlCell {
 			self.subLabelOne?.font = CVDStyle.style.currentFont
 			self.subLabelTwo?.font = CVDStyle.style.currentFont
 			self.subLabelThree?.font = CVDStyle.style.currentFont
+			
 			
 			if subCellModelOne?.storedValue?.isChecked == true {
 				updateCellOne()
@@ -1462,6 +1725,40 @@ class DisclosureCellInputExpandable: GeneratedCell {
 
 class RightIntegerCellExpandable: GeneratedCell {
 	
+	override func updateCell(model: EvaluationItem) {
+		super.updateCell(model: model)
+		self.subLabelOne?.text = subCellModelOne?.title
+		self.subLabelTwo?.text = subCellModelTwo?.title
+		self.subLabelThree?.text = subCellModelThree?.title
+		//self.textField?.delegate = self
+		
+		let theitems = cellModel.items
+		print("items size \(theitems.count)")
+		
+		for i in theitems {
+			let t = i.title
+			print("title - \(t)")
+		}
+		
+	}
+	
+		override func layoutSubviews() {
+			super.layoutSubviews()
+			
+	//		self.subLabelOne?.text = subCellModelOne.title
+	//		self.subLabelTwo?.text = subCellModelTwo.title
+	//		self.subLabelThree?.text = subCellModelThree.title
+			//self.textField?.delegate = self
+			
+			let theitems = cellModel.items
+			print("items size \(theitems.count)")
+			
+			for i in theitems {
+				let t = i.title
+				print("title - \(t)")
+			}
+		}
+	
   /*
 	subCellModelOne = EvaluationItem(literal: Presentation.urineNaMeql)
 	
@@ -1471,6 +1768,9 @@ class RightIntegerCellExpandable: GeneratedCell {
 	*/
 	
 	/*
+	
+	
+	
 	override func updateCell() {
 		super.updateCell()
 		self.subLabelOne?.text = subCellModelOne?.title

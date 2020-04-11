@@ -40,6 +40,9 @@ enum ItemType: String {
 	
 	case separator = "#separator"
 	
+	case sbpExpandable = "#sbpExpandable"
+	case dbpExpandable = "#dbpExpandable"
+	
 	case textRight = "#textRight"
 	case textLeft = "#textLeft"
 	case mail = "#mail"
@@ -98,6 +101,9 @@ enum ItemType: String {
 		case .textRight, .integerRight, .integerRightExpandable, .decimalRight, .check, .radio, .minutesSeconds:
 			return 60.0
 			
+		case .sbpExpandable, .dbpExpandable:
+			return 65.0
+			
 		case .partnerCard:
 			return 417.0
 
@@ -155,8 +161,8 @@ enum ItemType: String {
 		case .date:
 			return .string
 			
-		case .integerLeft, .integerRight, .integerRightExpandable, .minutesSeconds:
-			return .integer
+		case .integerLeft, .integerRight, .integerRightExpandable, .sbpExpandable, .dbpExpandable, .minutesSeconds:
+		return .integer
 			
 		case .decimalLeft, .decimalRight:
 			return .decimal
@@ -227,6 +233,7 @@ enum ItemType: String {
 		case .textRight:
 			return "RightTextCell"
 			
+			
 		// Integer Fields
 		case .integerLeft:
 			return "LeftIntegerCell"
@@ -237,6 +244,11 @@ enum ItemType: String {
 		case .integerRightExpandable:
 			return "RightIntegerCellExpandable"
 			
+		case .sbpExpandable:
+					return "SBPCellExpandable"
+
+		case .dbpExpandable:
+					return "DBPCellExpandable"
 		// Decimal Fields
 		case .decimalLeft:
 			return "LeftDecimalCell"

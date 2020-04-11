@@ -389,15 +389,34 @@ class GeneratedController: BaseTableController, NVActivityIndicatorViewable {
 			let patientname: String = isSaveMode ? (model.bio.name.storedValue?.value)! : "None"
 			let gender: Int = model.bio.gender.storedValue?.value == "male" ? 1 : 2
 			
+			let sbp = Int((model.bio.sbp.storedValue?.value)!)!
+			let dbp = Int((model.bio.dbp.storedValue?.value)!)!
+
+			var txtNumberSBP: Int = 0
+			var txtDurationSBP: Int = 0
+			if sbp > 130 {
+				txtNumberSBP = Int((model.bio.sbp.items.last?.storedValue!.value)!)!
+			} else if sbp < 90 {
+				txtDurationSBP = Int((model.bio.sbp.items.first?.storedValue!.value)!)!
+			}
+
+			var txtNumberDBP: Int = 0
+			if dbp > 80 {
+				txtNumberDBP = Int((model.bio.dbp.items.last?.storedValue!.value)!)!
+			}
+			
 			let evaluation = EvaluationRequest(uuid: uuid,
-			                                   isSave: saveMode,
-			                                   age: Int((model.bio.age.storedValue?.value)!)!,
-			                                   isPAH:String(DataManager.manager.getPAHValue()),
-			                                   name: patientname,
-			                                   gender: gender,
-			                                   SBP: Int((model.bio.sbp.storedValue?.value)!)!,
-			                                   DBP: Int((model.bio.dbp.storedValue?.value)!)!,
-			                                   inputs: inputs)
+														  isSave: saveMode,
+														  age: Int((model.bio.age.storedValue?.value)!)!,
+														  isPAH:String(DataManager.manager.getPAHValue()),
+														  name: patientname,
+														  gender: gender,
+														  SBP: sbp,
+														  txtNumberSBP: txtNumberSBP,
+														  txtDurationSBP: txtDurationSBP,
+														  DBP: dbp,
+														  txtNumberDBP: txtNumberDBP,
+														  inputs: inputs)
 			//print("PAH:\t" + evaluation.isPAH + "\t Inputs:\t " + evaluation.inputs)
 			
 			client.computeEvaluation(evaluationRequest: evaluation, success: { (response) in print(response)
