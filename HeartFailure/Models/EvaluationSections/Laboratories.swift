@@ -14,7 +14,7 @@ import Foundation
 class Laboratories: EvaluationItem {
 	
 	let chemBasicLabel = EvaluationItem(literal: Presentation.chemBasicLabel)
-	let nameqlValue = EvaluationItem(literal: Presentation.nameqlValue)
+	let nameqlValue = Nameql(literal: Presentation.nameqlValue)
 	let kmeql = EvaluationItem(literal: Presentation.kmeql)
 	let creatinineMgDl = EvaluationItem(literal: Presentation.creatinineMgDl)
 	let bunMgDl = EvaluationItem(literal: Presentation.bunMgDl)

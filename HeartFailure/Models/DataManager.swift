@@ -936,6 +936,25 @@ class DataManager {
 			result = result + "|HR=" + (DataManager.manager.evaluation!.bio.heartRate.storedValue?.value)!
 		}
 		
+		if let evaluationItem = DataManager.manager.evaluation {
+			let spbItems = evaluationItem.bio.sbp.subItems
+
+			for spbItem in spbItems {
+				if(spbItem.identifier == "txtNumberSBP" && !result.contains("txtNumberSBP")){
+					if let value = spbItem.storedValue?.value {
+						result = result + "|txtNumberSBP=" + value
+					}
+				}
+
+				if(spbItem.identifier == "txtDurationSBP" && !result.contains("txtDurationSBP")){
+					if let value = spbItem.storedValue?.value {
+						result = result + "|txtDurationSBP=" + value
+					}
+				}
+			}
+
+		}
+		
 		for s in inputsStrings {
 			if s != "" {
 				result = result + "|" + s

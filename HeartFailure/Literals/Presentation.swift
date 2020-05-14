@@ -578,7 +578,7 @@ struct Presentation {
 	// MARK: - Laboratories https://zpl.io/2kxbQs
 	//
 	static let chemBasicLabel = "#id:chemBasicLabel | #title:Chem Basic | #type:#label"
-	static let nameqlValue = "#id:txtNameq | #title:Na meq/l |#type:#integerRight | #min:99 | #max:170 | #placeholder: Na meq/l"
+	static let nameqlValue = "#id:txtNameq | #title:Na meq/l |#type:#integerRightExpandable | #min:99 | #max:170 | #placeholder: Na meq/l"
 	static let urineNaMeql = "#id:txturineNa | #title:Urine Na meq/l |#type:#integerRight | #min:1 | #max:200 | #placeholder: Urine Na meq/l | #dependsOn: nameqlValue| #dependMin: 99| #dependMax: 130"
 	static let serumOsmolality = "#id:txtsosm | #title:Serum Osmolality |#type:#integerRight | #min:200 | #max:400 | #placeholder: Serum Osmolality | #dependsOn: nameqlValue| #dependMin: 99| #dependMax: 130"
 	static let urineOsmolality = "#id:txtuosm | #title:Urine Osmolality |#type:#integerRight | #min:200 | #max:1000 | #placeholder: Urine Osmolality | #dependsOn: nameqlValue| #dependMin: 99| #dependMax: 130"
